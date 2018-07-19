@@ -6,9 +6,6 @@ namespace PatientManager.Patients
 {
 	public class Room
 	{
-        int _roomNumber;
-        bool _available;
-        bool _showerRoom;
         bool _blocked;
 
         public int RoomNumber { get; }
@@ -28,16 +25,16 @@ namespace PatientManager.Patients
                 _blocked = value;
                 if (_blocked == true)
                 {
-                    _available = false;
+                    Available = false;
                 }
 			}
 		}
 
 		public Room(int number, bool showerRoom)
 		{
-            this._roomNumber = number;
-            this._showerRoom = showerRoom;
-            this._available = true;
+            this.RoomNumber = number;
+            this.ShowerRoom = showerRoom;
+            this.Available = true;
             this._blocked = false;
 		}
 	}

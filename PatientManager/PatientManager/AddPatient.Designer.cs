@@ -36,7 +36,6 @@
             this.lastName = new System.Windows.Forms.Label();
             this.nameBox = new System.Windows.Forms.TextBox();
             this.Room = new System.Windows.Forms.Label();
-            this.roomBox = new System.Windows.Forms.ComboBox();
             this.DeliveryGroup = new System.Windows.Forms.GroupBox();
             this.gynButton = new System.Windows.Forms.RadioButton();
             this.csRadio = new System.Windows.Forms.RadioButton();
@@ -51,6 +50,7 @@
             this.nicuCheck = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.AttendingBox = new System.Windows.Forms.TextBox();
+            this.roomBox = new System.Windows.Forms.ComboBox();
             this.typeGroup.SuspendLayout();
             this.DeliveryGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -132,14 +132,6 @@
             this.Room.Size = new System.Drawing.Size(69, 13);
             this.Room.TabIndex = 7;
             this.Room.Text = "Assign Room";
-            // 
-            // roomBox
-            // 
-            this.roomBox.FormattingEnabled = true;
-            this.roomBox.Location = new System.Drawing.Point(141, 142);
-            this.roomBox.Name = "roomBox";
-            this.roomBox.Size = new System.Drawing.Size(110, 21);
-            this.roomBox.TabIndex = 8;
             // 
             // DeliveryGroup
             // 
@@ -285,6 +277,15 @@
             this.AttendingBox.Size = new System.Drawing.Size(145, 20);
             this.AttendingBox.TabIndex = 16;
             // 
+            // roomBox
+            // 
+            this.roomBox.AllowDrop = true;
+            this.roomBox.FormattingEnabled = true;
+            this.roomBox.Location = new System.Drawing.Point(141, 142);
+            this.roomBox.Name = "roomBox";
+            this.roomBox.Size = new System.Drawing.Size(110, 21);
+            this.roomBox.TabIndex = 8;
+            // 
             // AddPatient
             // 
             this.AcceptButton = this.AddButton;
@@ -328,7 +329,6 @@
         private System.Windows.Forms.Label lastName;
         private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.Label Room;
-        private System.Windows.Forms.ComboBox roomBox;
         private System.Windows.Forms.GroupBox DeliveryGroup;
         private System.Windows.Forms.RadioButton gynButton;
         private System.Windows.Forms.RadioButton csRadio;
@@ -343,5 +343,6 @@
         private System.Windows.Forms.CheckBox nicuCheck;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox AttendingBox;
+        private System.Windows.Forms.ComboBox roomBox;
     }
 }

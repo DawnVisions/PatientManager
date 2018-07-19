@@ -14,9 +14,16 @@ namespace PatientManager
 {
     public partial class AddPatient : Form
     {
-        public AddPatient()
+        public AddPatient(List<Room> allRooms)
         {
             InitializeComponent();
+            foreach (Room room in allRooms)
+            {
+                if (room.Available)
+                {
+                    roomBox.Items.Add(room);
+                }
+            }
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -59,7 +66,7 @@ namespace PatientManager
                     medicaidCheck.Checked, 
                     type, 
                     deliveryDate.Value, 
-                    roomBox.SelectedItem);
+                    (Room)roomBox.SelectedItem);
                 //give newPatient to FamilySuites
             }
             else
