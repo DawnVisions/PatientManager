@@ -38,17 +38,17 @@
             this.Room = new System.Windows.Forms.Label();
             this.roomBox = new System.Windows.Forms.ComboBox();
             this.DeliveryGroup = new System.Windows.Forms.GroupBox();
-            this.vagRadio = new System.Windows.Forms.RadioButton();
-            this.csRadio = new System.Windows.Forms.RadioButton();
             this.gynButton = new System.Windows.Forms.RadioButton();
+            this.csRadio = new System.Windows.Forms.RadioButton();
+            this.vagRadio = new System.Windows.Forms.RadioButton();
             this.delivDate = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.deliveryDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.nicuCheck = new System.Windows.Forms.CheckBox();
-            this.medicaidCheck = new System.Windows.Forms.CheckBox();
-            this.pihCheck = new System.Windows.Forms.CheckBox();
-            this.confidCheck = new System.Windows.Forms.CheckBox();
             this.nonEngCheck = new System.Windows.Forms.CheckBox();
+            this.confidCheck = new System.Windows.Forms.CheckBox();
+            this.pihCheck = new System.Windows.Forms.CheckBox();
+            this.medicaidCheck = new System.Windows.Forms.CheckBox();
+            this.nicuCheck = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.AttendingBox = new System.Windows.Forms.TextBox();
             this.typeGroup.SuspendLayout();
@@ -153,16 +153,16 @@
             this.DeliveryGroup.TabStop = false;
             this.DeliveryGroup.Text = "Patient Type";
             // 
-            // vagRadio
+            // gynButton
             // 
-            this.vagRadio.AutoSize = true;
-            this.vagRadio.Location = new System.Drawing.Point(27, 19);
-            this.vagRadio.Name = "vagRadio";
-            this.vagRadio.Size = new System.Drawing.Size(44, 17);
-            this.vagRadio.TabIndex = 0;
-            this.vagRadio.TabStop = true;
-            this.vagRadio.Text = "Vag";
-            this.vagRadio.UseVisualStyleBackColor = true;
+            this.gynButton.AutoSize = true;
+            this.gynButton.Location = new System.Drawing.Point(26, 65);
+            this.gynButton.Name = "gynButton";
+            this.gynButton.Size = new System.Drawing.Size(48, 17);
+            this.gynButton.TabIndex = 2;
+            this.gynButton.TabStop = true;
+            this.gynButton.Text = "GYN";
+            this.gynButton.UseVisualStyleBackColor = true;
             // 
             // csRadio
             // 
@@ -175,16 +175,16 @@
             this.csRadio.Text = "C/S";
             this.csRadio.UseVisualStyleBackColor = true;
             // 
-            // gynButton
+            // vagRadio
             // 
-            this.gynButton.AutoSize = true;
-            this.gynButton.Location = new System.Drawing.Point(26, 65);
-            this.gynButton.Name = "gynButton";
-            this.gynButton.Size = new System.Drawing.Size(48, 17);
-            this.gynButton.TabIndex = 2;
-            this.gynButton.TabStop = true;
-            this.gynButton.Text = "GYN";
-            this.gynButton.UseVisualStyleBackColor = true;
+            this.vagRadio.AutoSize = true;
+            this.vagRadio.Location = new System.Drawing.Point(27, 19);
+            this.vagRadio.Name = "vagRadio";
+            this.vagRadio.Size = new System.Drawing.Size(44, 17);
+            this.vagRadio.TabIndex = 0;
+            this.vagRadio.TabStop = true;
+            this.vagRadio.Text = "Vag";
+            this.vagRadio.UseVisualStyleBackColor = true;
             // 
             // delivDate
             // 
@@ -195,16 +195,16 @@
             this.delivDate.TabIndex = 10;
             this.delivDate.Text = "Delivery/Surgery Date";
             // 
-            // dateTimePicker1
+            // deliveryDate
             // 
-            this.dateTimePicker1.CustomFormat = "M/d/yy      HH:mm";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(38, 304);
-            this.dateTimePicker1.MinDate = new System.DateTime(2018, 7, 12, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(162, 20);
-            this.dateTimePicker1.TabIndex = 12;
-            this.dateTimePicker1.Value = new System.DateTime(2018, 7, 12, 12, 44, 16, 0);
+            this.deliveryDate.CustomFormat = "M/d/yy      HH:mm";
+            this.deliveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.deliveryDate.Location = new System.Drawing.Point(38, 304);
+            this.deliveryDate.MinDate = new System.DateTime(2018, 7, 12, 0, 0, 0, 0);
+            this.deliveryDate.Name = "deliveryDate";
+            this.deliveryDate.Size = new System.Drawing.Size(162, 20);
+            this.deliveryDate.TabIndex = 12;
+            this.deliveryDate.Value = new System.DateTime(2018, 7, 12, 12, 44, 16, 0);
             // 
             // groupBox2
             // 
@@ -219,35 +219,15 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             // 
-            // nicuCheck
+            // nonEngCheck
             // 
-            this.nicuCheck.AutoSize = true;
-            this.nicuCheck.Location = new System.Drawing.Point(30, 36);
-            this.nicuCheck.Name = "nicuCheck";
-            this.nicuCheck.Size = new System.Drawing.Size(52, 17);
-            this.nicuCheck.TabIndex = 0;
-            this.nicuCheck.Text = "NICU";
-            this.nicuCheck.UseVisualStyleBackColor = true;
-            // 
-            // medicaidCheck
-            // 
-            this.medicaidCheck.AutoSize = true;
-            this.medicaidCheck.Location = new System.Drawing.Point(30, 60);
-            this.medicaidCheck.Name = "medicaidCheck";
-            this.medicaidCheck.Size = new System.Drawing.Size(69, 17);
-            this.medicaidCheck.TabIndex = 1;
-            this.medicaidCheck.Text = "Medicaid";
-            this.medicaidCheck.UseVisualStyleBackColor = true;
-            // 
-            // pihCheck
-            // 
-            this.pihCheck.AutoSize = true;
-            this.pihCheck.Location = new System.Drawing.Point(30, 84);
-            this.pihCheck.Name = "pihCheck";
-            this.pihCheck.Size = new System.Drawing.Size(44, 17);
-            this.pihCheck.TabIndex = 2;
-            this.pihCheck.Text = "PIH";
-            this.pihCheck.UseVisualStyleBackColor = true;
+            this.nonEngCheck.AutoSize = true;
+            this.nonEngCheck.Location = new System.Drawing.Point(30, 132);
+            this.nonEngCheck.Name = "nonEngCheck";
+            this.nonEngCheck.Size = new System.Drawing.Size(107, 17);
+            this.nonEngCheck.TabIndex = 4;
+            this.nonEngCheck.Text = "Language Barrier";
+            this.nonEngCheck.UseVisualStyleBackColor = true;
             // 
             // confidCheck
             // 
@@ -259,15 +239,35 @@
             this.confidCheck.Text = "Confidential";
             this.confidCheck.UseVisualStyleBackColor = true;
             // 
-            // nonEngCheck
+            // pihCheck
             // 
-            this.nonEngCheck.AutoSize = true;
-            this.nonEngCheck.Location = new System.Drawing.Point(30, 132);
-            this.nonEngCheck.Name = "nonEngCheck";
-            this.nonEngCheck.Size = new System.Drawing.Size(107, 17);
-            this.nonEngCheck.TabIndex = 4;
-            this.nonEngCheck.Text = "Language Barrier";
-            this.nonEngCheck.UseVisualStyleBackColor = true;
+            this.pihCheck.AutoSize = true;
+            this.pihCheck.Location = new System.Drawing.Point(30, 84);
+            this.pihCheck.Name = "pihCheck";
+            this.pihCheck.Size = new System.Drawing.Size(44, 17);
+            this.pihCheck.TabIndex = 2;
+            this.pihCheck.Text = "PIH";
+            this.pihCheck.UseVisualStyleBackColor = true;
+            // 
+            // medicaidCheck
+            // 
+            this.medicaidCheck.AutoSize = true;
+            this.medicaidCheck.Location = new System.Drawing.Point(30, 60);
+            this.medicaidCheck.Name = "medicaidCheck";
+            this.medicaidCheck.Size = new System.Drawing.Size(69, 17);
+            this.medicaidCheck.TabIndex = 1;
+            this.medicaidCheck.Text = "Medicaid";
+            this.medicaidCheck.UseVisualStyleBackColor = true;
+            // 
+            // nicuCheck
+            // 
+            this.nicuCheck.AutoSize = true;
+            this.nicuCheck.Location = new System.Drawing.Point(30, 36);
+            this.nicuCheck.Name = "nicuCheck";
+            this.nicuCheck.Size = new System.Drawing.Size(52, 17);
+            this.nicuCheck.TabIndex = 0;
+            this.nicuCheck.Text = "NICU";
+            this.nicuCheck.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -295,7 +295,7 @@
             this.Controls.Add(this.AttendingBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.deliveryDate);
             this.Controls.Add(this.delivDate);
             this.Controls.Add(this.DeliveryGroup);
             this.Controls.Add(this.roomBox);
@@ -334,7 +334,7 @@
         private System.Windows.Forms.RadioButton csRadio;
         private System.Windows.Forms.RadioButton vagRadio;
         private System.Windows.Forms.Label delivDate;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker deliveryDate;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox nonEngCheck;
         private System.Windows.Forms.CheckBox confidCheck;

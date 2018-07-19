@@ -21,40 +21,45 @@ namespace PatientManager
 
         private void AddButton_Click(object sender, EventArgs e)
         {
+            DeliveryType type;
+            if (vagRadio.Checked)
+            {
+                type = new Vag();
+            }
+            else if (csRadio.Checked)
+            {
+                type = new CSection();
+            }
+            else
+            {
+                type = new Gyn();
+            }
             if (anticipatedRadio.Checked)
             {
-                DeliveryType type;
-                if (vagRadio.Checked)
-                {
-                    type = new Vag();
-                }
-                else if (csRadio.Checked)
-                {
-                    type = new CSection();
-                }
-                else if (gynButton.Checked)
-                {
-                    type = new Gyn();
-                }
-                AnticipatedPatient newPatient = new AnticipatedPatient(nameBox.Text, AttendingBox.Text, nicuCheck.Checked, confidCheck.Checked, nonEngCheck.Checked, pihCheck.Checked, medicaidCheck.Checked, type);
+                AnticipatedPatient newPatient = new AnticipatedPatient(
+                    nameBox.Text, 
+                    AttendingBox.Text, 
+                    nicuCheck.Checked, 
+                    confidCheck.Checked, 
+                    nonEngCheck.Checked, 
+                    pihCheck.Checked, 
+                    medicaidCheck.Checked, 
+                    type);
                 //give newPatient to FamilySuites
             }
             else if (deliveredRadio.Checked)
             {
-                DeliveryType type;
-                if (vagRadio.Checked)
-                {
-                    type = new Vag();
-                }
-                else if (csRadio.Checked)
-                {
-                    type = new CSection();
-                }
-                else if (gynButton.Checked)
-                {
-                    type = new Gyn();
-                }
-                DeliveredPatient newPatient = new DeliveredPatient(nameBox.Text, AttendingBox.Text, nicuCheck.Checked, confidCheck.Checked, nonEngCheck.Checked, pihCheck.Checked, medicaidCheck.Checked, type, delivDate.Text, roomBox.text);
+                DeliveredPatient newPatient = new DeliveredPatient(
+                    nameBox.Text, 
+                    AttendingBox.Text, 
+                    nicuCheck.Checked, 
+                    confidCheck.Checked, 
+                    nonEngCheck.Checked, 
+                    pihCheck.Checked, 
+                    medicaidCheck.Checked, 
+                    type, 
+                    deliveryDate.Value, 
+                    roomBox.SelectedItem);
                 //give newPatient to FamilySuites
             }
             else
