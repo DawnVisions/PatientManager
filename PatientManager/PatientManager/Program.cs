@@ -15,7 +15,7 @@ namespace PatientManager
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        void Main()
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -39,7 +39,7 @@ namespace PatientManager.Patients
                 }
                 else
                 {
-                    List<Newborn> _newborns = new List<Newborn>;
+                    List<Newborn> _newborns = new List<Newborn>();
                 }
 			}
 		}

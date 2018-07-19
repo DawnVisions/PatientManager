@@ -14,16 +14,29 @@ namespace PatientManager
 {
     public partial class AddPatient : Form
     {
-        public AddPatient(List<Room> allRooms)
+        UnitCensus FamilySuites;
+        public AddPatient(List<Room> AllRooms, UnitCensus FamilySuites)
         {
             InitializeComponent();
-            foreach (Room room in allRooms)
+            foreach (Room room in AllRooms)
             {
                 if (room.Available)
                 {
-                    roomBox.Items.Add(room);
+                    roomBox.Items.Add(room.RoomNumber);
                 }
             }
+            this.FamilySuites = FamilySuites;
+        }
+
+        void AddToAnticipatedCensus(AnticipatedPatient patient)
+        {
+            FamilySuites.AnticipatedPatients.Add(patient);
+        }
+
+        void AddToArrivedCensus(DeliveredPatient patient)
+        {
+            FamilySuites.DeliveredPatients.Add(patient);
+            patient.Room.Available = false;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -52,7 +65,8 @@ namespace PatientManager
                     pihCheck.Checked, 
                     medicaidCheck.Checked, 
                     type);
-                //give newPatient to FamilySuites
+                AddToAnticipatedCensus(newPatient);
+                this.Close();
             }
             else if (deliveredRadio.Checked)
             {
@@ -67,11 +81,26 @@ namespace PatientManager
                     type, 
                     deliveryDate.Value, 
                     (Room)roomBox.SelectedItem);
-                //give newPatient to FamilySuites
+                AddToArrivedCensus(newPatient);
+                this.Close();
             }
             else
             {
                 typeGroup.ForeColor = System.Drawing.Color.Maroon;
+            }
+        }
+
+        private void anticipatedRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (anticipatedRadio.Checked)
+            {
+                deliveryDate.Visible = false;
+                delivDate.Visible = false;
+            }
+            else
+            {
+                delivDate.Visible = true;
+                deliveryDate.Visible = true;
             }
         }
     }

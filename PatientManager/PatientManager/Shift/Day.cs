@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using PatientManager.Patients;
 
 namespace PatientManager.Shift
 {
@@ -8,7 +9,7 @@ namespace PatientManager.Shift
 	{
 		DateTime _day;
 
-		public void UpdateLOS(Patient[] patients)
+		public void UpdateLOS(List<Patient> patients)
 		{
 			throw new NotImplementedException();
 		}

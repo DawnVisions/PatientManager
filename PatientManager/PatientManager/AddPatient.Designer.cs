@@ -86,6 +86,7 @@
             this.anticipatedRadio.TabStop = true;
             this.anticipatedRadio.Text = "Anticipated";
             this.anticipatedRadio.UseVisualStyleBackColor = true;
+            this.anticipatedRadio.CheckedChanged += new System.EventHandler(this.anticipatedRadio_CheckedChanged);
             // 
             // deliveredRadio
             // 
@@ -196,7 +197,7 @@
             this.deliveryDate.Name = "deliveryDate";
             this.deliveryDate.Size = new System.Drawing.Size(162, 20);
             this.deliveryDate.TabIndex = 12;
-            this.deliveryDate.Value = new System.DateTime(2018, 7, 12, 12, 44, 16, 0);
+            this.deliveryDate.Value = new System.DateTime(2018, 7, 19, 15, 50, 22, 0);
             // 
             // groupBox2
             // 

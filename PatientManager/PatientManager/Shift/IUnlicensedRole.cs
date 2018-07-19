@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using PatientManager.Staff;
 
 namespace PatientManager.Shift
 {
 	public interface IUnlicensedRole : IRole
 	{
-		Staff PPHUA
+		PCT PPHUA
 		{
 			get;
 			set;
@@ -18,7 +19,7 @@ namespace PatientManager.Shift
 			set;
 		}
 
-		Staff PPTech
+		PCT PPTech
 		{
 			get;
 			set;
@@ -30,7 +31,7 @@ namespace PatientManager.Shift
 			set;
 		}
 
-		Staff TriageHUA
+		PCT TriageHUA
 		{
 			get;
 			set;

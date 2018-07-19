@@ -6,17 +6,13 @@ namespace PatientManager.Patients
 {
 	public class UnitCensus
 	{
-		public const int Capacity = 27;
+		public static int Capacity = 27;
 
 		public int TotalPatients
 		{
 			get
 			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
+				return DeliveredPatients.Count;
 			}
 		}
 
@@ -83,7 +79,7 @@ namespace PatientManager.Patients
 
 		public UnitCensus()
 		{
-			throw new NotImplementedException();
+			
 		}
 	}
 }

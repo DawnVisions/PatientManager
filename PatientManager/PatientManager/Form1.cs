@@ -41,10 +41,24 @@ namespace PatientManager
             return rooms;
         }
 
+        void ShowAnticipatedPatients()
+        {
+            AnticipatedPatients.Items.Clear();
+            foreach (Patient patient in FamilySuites.AnticipatedPatients)
+            {
+                AnticipatedPatients.Items.Add(patient.LastName);
+            }
+        }
+
         private void AddPatientButton_Click(object sender, EventArgs e)
         {
-            AddPatient newPatient = new AddPatient(AllRooms);
+            AddPatient newPatient = new AddPatient(AllRooms, FamilySuites);
             newPatient.Show();
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            ShowAnticipatedPatients();
         }
     }
 }

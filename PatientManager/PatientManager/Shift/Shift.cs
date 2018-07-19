@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using PatientManager.Staff;
 
 namespace PatientManager.Shift
 {
 	public abstract class Shift
 	{
-		public List<Nurse> PPNursesScheduled
+		public List<CorePostpartum> PPNursesScheduled
 		{
 			get
 			{
@@ -18,7 +19,7 @@ namespace PatientManager.Shift
 			}
 		}
 
-		public List<NurseryNurse> NBNScheduled
+		public List<CoreNursery> NBNScheduled
 		{
 			get
 			{
