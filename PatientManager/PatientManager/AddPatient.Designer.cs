@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.AddButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.anticipatedRadio = new System.Windows.Forms.RadioButton();
@@ -51,9 +52,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.AttendingBox = new System.Windows.Forms.TextBox();
             this.roomBox = new System.Windows.Forms.ComboBox();
+            this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.typeGroup.SuspendLayout();
             this.DeliveryGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // AddButton
@@ -281,11 +284,17 @@
             // roomBox
             // 
             this.roomBox.AllowDrop = true;
+            this.roomBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.roomBindingSource, "RoomNumber", true));
+            this.roomBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomBindingSource, "RoomNumber", true));
             this.roomBox.FormattingEnabled = true;
             this.roomBox.Location = new System.Drawing.Point(141, 142);
             this.roomBox.Name = "roomBox";
             this.roomBox.Size = new System.Drawing.Size(110, 21);
             this.roomBox.TabIndex = 8;
+            // 
+            // roomBindingSource
+            // 
+            this.roomBindingSource.DataSource = typeof(PatientManager.Patients.Room);
             // 
             // AddPatient
             // 
@@ -315,6 +324,7 @@
             this.DeliveryGroup.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,5 +355,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox AttendingBox;
         private System.Windows.Forms.ComboBox roomBox;
+        private System.Windows.Forms.BindingSource roomBindingSource;
     }
 }

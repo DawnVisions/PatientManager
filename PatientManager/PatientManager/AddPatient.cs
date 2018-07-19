@@ -18,19 +18,28 @@ namespace PatientManager
         public AddPatient(List<Room> AllRooms, UnitCensus FamilySuites)
         {
             InitializeComponent();
+            SetUpRoomList(AllRooms);
+            this.FamilySuites = FamilySuites;
+        }
+
+        void SetUpRoomList(List<Room> AllRooms)
+        {
+            List<Room> AvailableRooms = new List<Room>();
             foreach (Room room in AllRooms)
             {
                 if (room.Available)
                 {
-                    roomBox.Items.Add(room.RoomNumber);
+                    AvailableRooms.Add(room);
                 }
             }
-            this.FamilySuites = FamilySuites;
+            roomBox.DataSource = AvailableRooms;
+            roomBox.DisplayMember = "RoomNumber";
         }
 
         void AddToAnticipatedCensus(AnticipatedPatient patient)
         {
             FamilySuites.AnticipatedPatients.Add(patient);
+            patient.PreAssignedRoom.Available = false;
         }
 
         void AddToArrivedCensus(DeliveredPatient patient)
@@ -63,7 +72,8 @@ namespace PatientManager
                     confidCheck.Checked, 
                     nonEngCheck.Checked, 
                     pihCheck.Checked, 
-                    medicaidCheck.Checked, 
+                    medicaidCheck.Checked,
+                    (Room)roomBox.SelectedItem,
                     type);
                 AddToAnticipatedCensus(newPatient);
                 this.Close();

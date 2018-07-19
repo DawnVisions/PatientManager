@@ -9,7 +9,7 @@ namespace PatientManager.Patients
 	{
         
         public DeliveryType AnticipatedDeliveryType { get; set; }
-
+        public Room PreAssignedRoom { get; set; }
 
 		public DeliveredPatient PatientDelivered(DeliveryType type, DateTime date, DateTime time, Room room)
 		{
@@ -17,9 +17,20 @@ namespace PatientManager.Patients
             return newPatient;
 		}
 
-        public AnticipatedPatient(string lastName, string attending, bool nicu, bool confidential, bool nonEng, bool pih, bool medicaid, DeliveryType anticipatedDeliveryType) : base(lastName, attending, nicu, confidential, nonEng, pih, medicaid)
+        public AnticipatedPatient(
+            string lastName,
+            string attending,
+            bool nicu,
+            bool confidential,
+            bool nonEng,
+            bool pih,
+            bool medicaid,
+            Room preAssignedRoom,
+            DeliveryType anticipatedDeliveryType) 
+            : base(lastName, attending, nicu, confidential, nonEng, pih, medicaid)
         {
             AnticipatedDeliveryType = anticipatedDeliveryType;
+            PreAssignedRoom = preAssignedRoom;
         }
     }
 }

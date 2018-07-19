@@ -53,6 +53,7 @@ namespace PatientManager
         private void AddPatientButton_Click(object sender, EventArgs e)
         {
             AddPatient newPatient = new AddPatient(AllRooms, FamilySuites);
+
             newPatient.Show();
         }
 
