@@ -12,17 +12,17 @@ using PatientManager.Patients;
 
 namespace PatientManager
 {
-    public partial class AddPatient : Form
+    public partial class FormAddPatient : Form
     {
         UnitCensus FamilySuites;
-        public AddPatient(List<Room> AllRooms, UnitCensus FamilySuites)
+        public FormAddPatient(List<Room> AllRooms, UnitCensus FamilySuites)
         {
             InitializeComponent();
-            SetUpRoomList(AllRooms);
+            SetUpRoomComboBox(AllRooms);
             this.FamilySuites = FamilySuites;
         }
 
-        void SetUpRoomList(List<Room> AllRooms)
+        void SetUpRoomComboBox(List<Room> AllRooms)
         {
             List<Room> AvailableRooms = new List<Room>();
             foreach (Room room in AllRooms)
@@ -38,13 +38,13 @@ namespace PatientManager
 
         void AddToAnticipatedCensus(AnticipatedPatient patient)
         {
-            FamilySuites.AnticipatedPatients.Add(patient);
+            FamilySuites.AddAnticipatedPatient(patient);
             patient.PreAssignedRoom.Available = false;
         }
 
         void AddToArrivedCensus(DeliveredPatient patient)
         {
-            FamilySuites.DeliveredPatients.Add(patient);
+            FamilySuites.AddDeliveredPatient(patient);
             patient.Room.Available = false;
         }
 
@@ -112,6 +112,11 @@ namespace PatientManager
                 delivDate.Visible = true;
                 deliveryDate.Visible = true;
             }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

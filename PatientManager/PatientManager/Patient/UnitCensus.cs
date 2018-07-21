@@ -40,17 +40,7 @@ namespace PatientManager.Patients
 			}
 		}
 
-		public List<DeliveredPatient> DeliveredPatients
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
-		}
+		
 
 		public List<Newborn> NurseryCensus
 		{
@@ -64,6 +54,7 @@ namespace PatientManager.Patients
 			}
 		}
 
+        public List<DeliveredPatient> DeliveredPatients = new List<DeliveredPatient>();
         public List<AnticipatedPatient> AnticipatedPatients = new List<AnticipatedPatient>();
 
         public bool DischargePatient()
@@ -74,6 +65,12 @@ namespace PatientManager.Patients
         public bool AddAnticipatedPatient(AnticipatedPatient patient)
         {
             AnticipatedPatients.Add(patient);
+            return true;
+        }
+
+        public bool AddDeliveredPatient(DeliveredPatient patient)
+        {
+            DeliveredPatients.Add(patient);
             return true;
         }
 

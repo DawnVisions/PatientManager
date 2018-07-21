@@ -1,6 +1,6 @@
 ﻿namespace PatientManager
 {
-    partial class AddPatient
+    partial class FormAddPatient
     {
         /// <summary>
         /// Required designer variable.
@@ -64,7 +64,7 @@
             this.AddButton.Location = new System.Drawing.Point(530, 364);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 23);
-            this.AddButton.TabIndex = 0;
+            this.AddButton.TabIndex = 12;
             this.AddButton.Text = "Add Patient";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
@@ -78,6 +78,7 @@
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // anticipatedRadio
             // 
@@ -86,7 +87,6 @@
             this.anticipatedRadio.Name = "anticipatedRadio";
             this.anticipatedRadio.Size = new System.Drawing.Size(78, 17);
             this.anticipatedRadio.TabIndex = 2;
-            this.anticipatedRadio.TabStop = true;
             this.anticipatedRadio.Text = "Anticipated";
             this.anticipatedRadio.UseVisualStyleBackColor = true;
             this.anticipatedRadio.CheckedChanged += new System.EventHandler(this.anticipatedRadio_CheckedChanged);
@@ -98,7 +98,6 @@
             this.deliveredRadio.Name = "deliveredRadio";
             this.deliveredRadio.Size = new System.Drawing.Size(70, 17);
             this.deliveredRadio.TabIndex = 3;
-            this.deliveredRadio.TabStop = true;
             this.deliveredRadio.Text = "Delivered";
             this.deliveredRadio.UseVisualStyleBackColor = true;
             // 
@@ -123,10 +122,11 @@
             // 
             // nameBox
             // 
+            this.nameBox.AcceptsTab = true;
             this.nameBox.Location = new System.Drawing.Point(106, 78);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(145, 20);
-            this.nameBox.TabIndex = 6;
+            this.nameBox.TabIndex = 0;
             // 
             // Room
             // 
@@ -177,7 +177,7 @@
             this.vagRadio.Location = new System.Drawing.Point(27, 19);
             this.vagRadio.Name = "vagRadio";
             this.vagRadio.Size = new System.Drawing.Size(44, 17);
-            this.vagRadio.TabIndex = 0;
+            this.vagRadio.TabIndex = 3;
             this.vagRadio.TabStop = true;
             this.vagRadio.Text = "Vag";
             this.vagRadio.UseVisualStyleBackColor = true;
@@ -199,7 +199,7 @@
             this.deliveryDate.MinDate = new System.DateTime(2018, 7, 12, 0, 0, 0, 0);
             this.deliveryDate.Name = "deliveryDate";
             this.deliveryDate.Size = new System.Drawing.Size(162, 20);
-            this.deliveryDate.TabIndex = 12;
+            this.deliveryDate.TabIndex = 3;
             this.deliveryDate.Value = new System.DateTime(2018, 7, 19, 15, 50, 22, 0);
             // 
             // groupBox2
@@ -221,7 +221,7 @@
             this.nonEngCheck.Location = new System.Drawing.Point(30, 132);
             this.nonEngCheck.Name = "nonEngCheck";
             this.nonEngCheck.Size = new System.Drawing.Size(107, 17);
-            this.nonEngCheck.TabIndex = 4;
+            this.nonEngCheck.TabIndex = 11;
             this.nonEngCheck.Text = "Language Barrier";
             this.nonEngCheck.UseVisualStyleBackColor = true;
             // 
@@ -231,7 +231,7 @@
             this.confidCheck.Location = new System.Drawing.Point(30, 108);
             this.confidCheck.Name = "confidCheck";
             this.confidCheck.Size = new System.Drawing.Size(81, 17);
-            this.confidCheck.TabIndex = 3;
+            this.confidCheck.TabIndex = 10;
             this.confidCheck.Text = "Confidential";
             this.confidCheck.UseVisualStyleBackColor = true;
             // 
@@ -241,7 +241,7 @@
             this.pihCheck.Location = new System.Drawing.Point(30, 84);
             this.pihCheck.Name = "pihCheck";
             this.pihCheck.Size = new System.Drawing.Size(44, 17);
-            this.pihCheck.TabIndex = 2;
+            this.pihCheck.TabIndex = 9;
             this.pihCheck.Text = "PIH";
             this.pihCheck.UseVisualStyleBackColor = true;
             // 
@@ -251,7 +251,7 @@
             this.medicaidCheck.Location = new System.Drawing.Point(30, 60);
             this.medicaidCheck.Name = "medicaidCheck";
             this.medicaidCheck.Size = new System.Drawing.Size(69, 17);
-            this.medicaidCheck.TabIndex = 1;
+            this.medicaidCheck.TabIndex = 8;
             this.medicaidCheck.Text = "Medicaid";
             this.medicaidCheck.UseVisualStyleBackColor = true;
             // 
@@ -261,7 +261,7 @@
             this.nicuCheck.Location = new System.Drawing.Point(30, 36);
             this.nicuCheck.Name = "nicuCheck";
             this.nicuCheck.Size = new System.Drawing.Size(52, 17);
-            this.nicuCheck.TabIndex = 0;
+            this.nicuCheck.TabIndex = 7;
             this.nicuCheck.Text = "NICU";
             this.nicuCheck.UseVisualStyleBackColor = true;
             // 
@@ -276,10 +276,11 @@
             // 
             // AttendingBox
             // 
+            this.AttendingBox.AcceptsTab = true;
             this.AttendingBox.Location = new System.Drawing.Point(106, 112);
             this.AttendingBox.Name = "AttendingBox";
             this.AttendingBox.Size = new System.Drawing.Size(145, 20);
-            this.AttendingBox.TabIndex = 16;
+            this.AttendingBox.TabIndex = 1;
             // 
             // roomBox
             // 
@@ -290,13 +291,13 @@
             this.roomBox.Location = new System.Drawing.Point(141, 142);
             this.roomBox.Name = "roomBox";
             this.roomBox.Size = new System.Drawing.Size(110, 21);
-            this.roomBox.TabIndex = 8;
+            this.roomBox.TabIndex = 2;
             // 
             // roomBindingSource
             // 
             this.roomBindingSource.DataSource = typeof(PatientManager.Patients.Room);
             // 
-            // AddPatient
+            // FormAddPatient
             // 
             this.AcceptButton = this.AddButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,7 +317,7 @@
             this.Controls.Add(this.typeGroup);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.AddButton);
-            this.Name = "AddPatient";
+            this.Name = "FormAddPatient";
             this.Text = "Add Patient";
             this.typeGroup.ResumeLayout(false);
             this.typeGroup.PerformLayout();

@@ -11,9 +11,9 @@ using PatientManager.Patients;
 
 namespace PatientManager
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -52,7 +52,7 @@ namespace PatientManager
 
         private void AddPatientButton_Click(object sender, EventArgs e)
         {
-            AddPatient newPatient = new AddPatient(AllRooms, FamilySuites);
+            FormAddPatient newPatient = new FormAddPatient(AllRooms, FamilySuites);
 
             newPatient.Show();
         }
