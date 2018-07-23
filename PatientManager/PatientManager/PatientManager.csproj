@@ -70,15 +70,12 @@
       <DependentUpon>FormAddPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="Patient\AnticipatedPatient.cs" />
-    <Compile Include="Patient\CSection.cs" />
     <Compile Include="Patient\DeliveredPatient.cs" />
     <Compile Include="Patient\DeliveryType.cs" />
-    <Compile Include="Patient\Gyn.cs" />
     <Compile Include="Patient\Newborn.cs" />
     <Compile Include="Patient\Patient.cs" />
     <Compile Include="Patient\Room.cs" />
     <Compile Include="Patient\UnitCensus.cs" />
-    <Compile Include="Patient\Vag.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shift\Day.cs" />

@@ -44,15 +44,15 @@ namespace PatientManager
             DeliveryType type;
             if (vagRadio.Checked)
             {
-                type = new Vag();
+                type = new DeliveryType(DeliveryType.PatientType.Vag);
             }
             else if (csRadio.Checked)
             {
-                type = new CSection();
+                type = new DeliveryType(DeliveryType.PatientType.CS);
             }
             else
             {
-                type = new Gyn();
+                type = new DeliveryType(DeliveryType.PatientType.Gyn);
             }
             if (anticipatedRadio.Checked)
             {
@@ -88,6 +88,7 @@ namespace PatientManager
             }
             else
             {
+                MessageBox.Show("Please select Anticipated or Delivered Patient");
                 typeGroup.ForeColor = System.Drawing.Color.Maroon;
             }
         }
@@ -112,6 +113,7 @@ namespace PatientManager
             EditButton.Visible = true;
         }
 
+        //Hide delivery date if patient is anticipated
         private void anticipatedRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (anticipatedRadio.Checked)

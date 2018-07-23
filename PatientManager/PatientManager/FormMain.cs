@@ -16,7 +16,6 @@ namespace PatientManager
         public FormMain()
         {
             InitializeComponent();
-            SetUpDataGrid();
         }
 
         List<Room> AllRooms = CreateRooms();
@@ -59,11 +58,6 @@ namespace PatientManager
         private void Form1_Activated(object sender, EventArgs e)
         {
             ShowAnticipatedPatients();
-        }
-
-        void SetUpDataGrid()
-        {
-            //Fix columns on data grid
         }
 
         //Edit anticipated patient or change to delivered patient

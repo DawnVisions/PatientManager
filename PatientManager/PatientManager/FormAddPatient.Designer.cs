@@ -330,6 +330,7 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.AddButton);
             this.Name = "FormAddPatient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Patient";
             this.typeGroup.ResumeLayout(false);
             this.typeGroup.PerformLayout();

@@ -10,7 +10,7 @@ namespace PatientManager.Patients
         Room _room;
         List<Newborn> _newborns;
 
-        public DeliveryType DeliveryType { get; }
+        public DeliveryType PatientType { get; }
         public DateTime DeliveryDate { get; set; }
 		public Room Room
 		{
@@ -33,7 +33,7 @@ namespace PatientManager.Patients
 			}
 			set
 			{
-                if (DeliveryType is Gyn)
+                if (PatientType.Equals(DeliveryType.PatientType.Gyn))
                 {
                     throw new InvalidOperationException();
                 }
@@ -44,7 +44,7 @@ namespace PatientManager.Patients
 			}
 		}
 
-		public int currentLengthOfStay { get; set; }
+		public int CurrentLengthOfStay { get; set; }
         public int PlannedLOS { get; set; }
 
 		public DateTime PlannedDischargeDay { get; set; }
@@ -57,32 +57,28 @@ namespace PatientManager.Patients
 
 		public int Acuity { get; set; }
 
-		public int UpdateAcuity(int newAcuity)
-		{
-            Acuity = newAcuity;
-            return Acuity;
-		}
-
 		public DeliveredPatient(AnticipatedPatient patient, DeliveryType delivType, DateTime date, Room room) : base(patient)
 		{
-            DeliveryType = delivType;
+            PatientType = delivType;
             DeliveryDate = date;
             Room = room;
             Newborns = new List<Newborn> { };
-            currentLengthOfStay = 0;
-            PlannedLOS = DeliveryType.DefaultLOS;
+            CurrentLengthOfStay = 0;
+            PlannedLOS = delivType.InitialAcuity;
             PlannedDischargeDay = DateTime.Today.AddDays(PlannedLOS);
+            Acuity = delivType.InitialAcuity;
 		}
 
 		public DeliveredPatient(string lastName, string attending, bool nicu, bool confidential, bool nonEng, bool pih, bool medicaid, DeliveryType delivType, DateTime date, Room room) : base(lastName, attending, nicu, confidential, nonEng, pih, medicaid)
         {
-            DeliveryType = delivType;
+            PatientType = delivType;
             DeliveryDate = date;
             Room = room;
             Newborns = new List<Newborn> { };
-            currentLengthOfStay = 0;
-            PlannedLOS = DeliveryType.DefaultLOS;
+            CurrentLengthOfStay = 0;
+            PlannedLOS = delivType.DefaultLOS;
             PlannedDischargeDay = DateTime.Today.AddDays(PlannedLOS);
+            Acuity = delivType.InitialAcuity;
         }
 	}
 }
