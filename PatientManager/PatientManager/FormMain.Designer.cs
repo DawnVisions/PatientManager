@@ -30,15 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AddPatientButton = new System.Windows.Forms.Button();
-            this.AnticipatedPatients = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DeliveredGrid = new System.Windows.Forms.DataGridView();
             this.DischargeButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliveredPatientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Home = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AnticipatedGrid = new System.Windows.Forms.DataGridView();
+            this.lastNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anticipatedDeliveryTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.preAssignedRoomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attendingDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anticipatedPatientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Room = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +54,10 @@
             this.nICUDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pIHDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.medicaidDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.deliveredPatientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.DeliveredGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AnticipatedGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anticipatedPatientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deliveredPatientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,29 +71,20 @@
             this.AddPatientButton.UseVisualStyleBackColor = true;
             this.AddPatientButton.Click += new System.EventHandler(this.AddPatientButton_Click);
             // 
-            // AnticipatedPatients
-            // 
-            this.AnticipatedPatients.FormattingEnabled = true;
-            this.AnticipatedPatients.Location = new System.Drawing.Point(61, 566);
-            this.AnticipatedPatients.Name = "AnticipatedPatients";
-            this.AnticipatedPatients.Size = new System.Drawing.Size(751, 173);
-            this.AnticipatedPatients.TabIndex = 1;
-            this.AnticipatedPatients.SelectedIndexChanged += new System.EventHandler(this.AnticipatedPatients_SelectedIndexChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(61, 547);
+            this.label1.Location = new System.Drawing.Point(40, 566);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Anticipated Patients";
             // 
-            // dataGridView1
+            // DeliveredGrid
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DeliveredGrid.AutoGenerateColumns = false;
+            this.DeliveredGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DeliveredGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Home,
             this.Room,
             this.lastNameDataGridViewTextBoxColumn,
@@ -95,11 +95,11 @@
             this.nICUDataGridViewCheckBoxColumn,
             this.pIHDataGridViewCheckBoxColumn,
             this.medicaidDataGridViewCheckBoxColumn});
-            this.dataGridView1.DataSource = this.deliveredPatientBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 34);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(711, 413);
-            this.dataGridView1.TabIndex = 7;
+            this.DeliveredGrid.DataSource = this.deliveredPatientBindingSource;
+            this.DeliveredGrid.Location = new System.Drawing.Point(32, 34);
+            this.DeliveredGrid.Name = "DeliveredGrid";
+            this.DeliveredGrid.Size = new System.Drawing.Size(918, 490);
+            this.DeliveredGrid.TabIndex = 7;
             // 
             // DischargeButton
             // 
@@ -130,17 +130,76 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // deliveredPatientBindingSource
-            // 
-            this.deliveredPatientBindingSource.AllowNew = false;
-            this.deliveredPatientBindingSource.DataSource = typeof(PatientManager.Patients.DeliveredPatient);
-            this.deliveredPatientBindingSource.Sort = "";
-            // 
             // Home
             // 
             this.Home.HeaderText = "H";
             this.Home.Name = "Home";
             this.Home.Width = 25;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Room";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Room";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "PatientType";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Type";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 50;
+            // 
+            // AnticipatedGrid
+            // 
+            this.AnticipatedGrid.AutoGenerateColumns = false;
+            this.AnticipatedGrid.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.AnticipatedGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AnticipatedGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lastNameDataGridViewTextBoxColumn1,
+            this.anticipatedDeliveryTypeDataGridViewTextBoxColumn,
+            this.preAssignedRoomDataGridViewTextBoxColumn,
+            this.attendingDataGridViewTextBoxColumn1});
+            this.AnticipatedGrid.DataSource = this.anticipatedPatientBindingSource;
+            this.AnticipatedGrid.Location = new System.Drawing.Point(32, 583);
+            this.AnticipatedGrid.Name = "AnticipatedGrid";
+            this.AnticipatedGrid.ReadOnly = true;
+            this.AnticipatedGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.AnticipatedGrid.Size = new System.Drawing.Size(443, 150);
+            this.AnticipatedGrid.TabIndex = 9;
+            this.AnticipatedGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AnticipatedGrid_CellContentDoubleClick);
+            // 
+            // lastNameDataGridViewTextBoxColumn1
+            // 
+            this.lastNameDataGridViewTextBoxColumn1.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn1.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn1.Name = "lastNameDataGridViewTextBoxColumn1";
+            this.lastNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // anticipatedDeliveryTypeDataGridViewTextBoxColumn
+            // 
+            this.anticipatedDeliveryTypeDataGridViewTextBoxColumn.DataPropertyName = "AnticipatedDeliveryType";
+            this.anticipatedDeliveryTypeDataGridViewTextBoxColumn.HeaderText = "Anticipated Type";
+            this.anticipatedDeliveryTypeDataGridViewTextBoxColumn.Name = "anticipatedDeliveryTypeDataGridViewTextBoxColumn";
+            this.anticipatedDeliveryTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // preAssignedRoomDataGridViewTextBoxColumn
+            // 
+            this.preAssignedRoomDataGridViewTextBoxColumn.DataPropertyName = "PreAssignedRoom";
+            this.preAssignedRoomDataGridViewTextBoxColumn.HeaderText = "Pre-Assigned Room";
+            this.preAssignedRoomDataGridViewTextBoxColumn.Name = "preAssignedRoomDataGridViewTextBoxColumn";
+            this.preAssignedRoomDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // attendingDataGridViewTextBoxColumn1
+            // 
+            this.attendingDataGridViewTextBoxColumn1.DataPropertyName = "Attending";
+            this.attendingDataGridViewTextBoxColumn1.HeaderText = "Attending";
+            this.attendingDataGridViewTextBoxColumn1.Name = "attendingDataGridViewTextBoxColumn1";
+            this.attendingDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // anticipatedPatientBindingSource
+            // 
+            this.anticipatedPatientBindingSource.DataSource = typeof(PatientManager.Patients.AnticipatedPatient);
             // 
             // Room
             // 
@@ -200,20 +259,28 @@
             this.medicaidDataGridViewCheckBoxColumn.Name = "medicaidDataGridViewCheckBoxColumn";
             this.medicaidDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
+            // deliveredPatientBindingSource
+            // 
+            this.deliveredPatientBindingSource.AllowNew = false;
+            this.deliveredPatientBindingSource.DataSource = typeof(PatientManager.Patients.DeliveredPatient);
+            this.deliveredPatientBindingSource.Sort = "";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1259, 785);
+            this.Controls.Add(this.AnticipatedGrid);
             this.Controls.Add(this.DischargeButton);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DeliveredGrid);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.AnticipatedPatients);
             this.Controls.Add(this.AddPatientButton);
             this.Name = "FormMain";
             this.Text = "Patient Manager";
             this.Activated += new System.EventHandler(this.Form1_Activated);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeliveredGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AnticipatedGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anticipatedPatientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deliveredPatientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -223,9 +290,8 @@
         #endregion
 
         private System.Windows.Forms.Button AddPatientButton;
-        private System.Windows.Forms.ListBox AnticipatedPatients;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DeliveredGrid;
         public System.Windows.Forms.BindingSource deliveredPatientBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn currentLengthOfStayDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button DischargeButton;
@@ -243,6 +309,14 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn medicaidDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anticipatedDeliveryTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn preAssignedRoomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn attendingDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource anticipatedPatientBindingSource;
+        private System.Windows.Forms.DataGridView AnticipatedGrid;
     }
 }
 

@@ -16,6 +16,8 @@ namespace PatientManager
         public FormMain()
         {
             InitializeComponent();
+            anticipatedPatientBindingSource.DataSource= FamilySuites.AnticipatedPatients;
+            deliveredPatientBindingSource.DataSource = FamilySuites.DeliveredPatients;
         }
 
         List<Room> AllRooms = CreateRooms();
@@ -40,50 +42,44 @@ namespace PatientManager
             return rooms;
         }
 
-        void ShowAnticipatedPatients()
-        {
-            AnticipatedPatients.Items.Clear();
-            foreach (Patient patient in FamilySuites.AnticipatedPatients)
-            {
-                AnticipatedPatients.Items.Add(patient.LastName);
-            }
-        }
-
         private void AddPatientButton_Click(object sender, EventArgs e)
         {
-            FormAddPatient newPatient = new FormAddPatient(AllRooms, FamilySuites, deliveredPatientBindingSource);
+            FormAddPatient newPatient = new FormAddPatient(AllRooms, FamilySuites);
             newPatient.Show();
         }
 
         private void Form1_Activated(object sender, EventArgs e)
         {
-            ShowAnticipatedPatients();
-        }
-
-        //Edit anticipated patient or change to delivered patient
-        private void AnticipatedPatients_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            FormAddPatient newPatient = new FormAddPatient(AllRooms, FamilySuites, deliveredPatientBindingSource);
-            newPatient.Show();
+            anticipatedPatientBindingSource.ResetBindings(false);
+            deliveredPatientBindingSource.ResetBindings(false);
         }
 
         private void DischargeButton_Click(object sender, EventArgs e)
         {
-            //if (dataGridView1.SelectedRows == null)
-            //{
-            //    MessageBox.Show("No patient selected");
-            //}
-            //else
-            //{
-            //    DeliveredPatient patient = dataGridView1.SelectedRows;
-            //    {
-            //        if (FamilySuites.DischargePatient(patient))
-            //            MessageBox.Show("{0} discharged", patient.LastName);
-            //        else
-            //            MessageBox.Show("Unable to complete discharge");
-            //    }
-            //}
+            if (DeliveredGrid.SelectedRows == null)
+            {
+                MessageBox.Show("No patient selected");
+            }
+            else
+            {
+                DeliveredPatient patient = (DeliveredPatient)DeliveredGrid.CurrentRow.DataBoundItem;
+                {
+                    if (FamilySuites.DischargePatient(patient))
+                        MessageBox.Show(patient.LastName + " discharged");
+                    else
+                        MessageBox.Show("Unable to complete discharge");
+                }
+            }
+        }
+
+        //Edit anticipated patient or change to delivered patient
+        private void AnticipatedGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AnticipatedPatient patientToEdit = (AnticipatedPatient)AnticipatedGrid.CurrentRow.DataBoundItem;
+            patientToEdit.PreAssignedRoom.Available = true;
+            FormAddPatient editPatient = new FormAddPatient(AllRooms, FamilySuites);
+            editPatient.EditPatient(patientToEdit);
+            editPatient.Show();
         }
     }
 }

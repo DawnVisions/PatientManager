@@ -109,6 +109,7 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FormMain.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Patients.AnticipatedPatient.datasource" />
     <None Include="Properties\DataSources\PatientManager.Patients.DeliveredPatient.datasource" />
     <None Include="Properties\DataSources\PatientManager.Patients.Patient.datasource" />
     <None Include="Properties\DataSources\PatientManager.Patients.Room.datasource" />

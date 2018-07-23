@@ -52,8 +52,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.AttendingBox = new System.Windows.Forms.TextBox();
             this.roomBox = new System.Windows.Forms.ComboBox();
-            this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.EditButton = new System.Windows.Forms.Button();
+            this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.typeGroup.SuspendLayout();
             this.DeliveryGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -294,19 +294,20 @@
             this.roomBox.Size = new System.Drawing.Size(110, 21);
             this.roomBox.TabIndex = 2;
             // 
-            // roomBindingSource
-            // 
-            this.roomBindingSource.DataSource = typeof(PatientManager.Patients.Room);
-            // 
             // EditButton
             // 
-            this.EditButton.Location = new System.Drawing.Point(530, 335);
+            this.EditButton.Location = new System.Drawing.Point(529, 364);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(75, 23);
             this.EditButton.TabIndex = 16;
             this.EditButton.Text = "Edit Patient";
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Visible = false;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // roomBindingSource
+            // 
+            this.roomBindingSource.DataSource = typeof(PatientManager.Patients.Room);
             // 
             // FormAddPatient
             // 

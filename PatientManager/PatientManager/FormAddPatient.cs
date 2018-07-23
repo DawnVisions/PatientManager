@@ -15,13 +15,11 @@ namespace PatientManager
     public partial class FormAddPatient : Form
     {
         UnitCensus FamilySuites;
-        BindingSource deliveredPatientBindingSource;
-        public FormAddPatient(List<Room> AllRooms, UnitCensus FamilySuites, BindingSource deliveredPatientBindingSource)
+        public FormAddPatient(List<Room> AllRooms, UnitCensus FamilySuites)
         {
             InitializeComponent();
             SetUpRoomComboBox(AllRooms);
             this.FamilySuites = FamilySuites;
-            this.deliveredPatientBindingSource = deliveredPatientBindingSource;
         }
 
         //Setting up drop down box with only the available rooms
@@ -83,7 +81,6 @@ namespace PatientManager
                     deliveryDate.Value, 
                     (Room)roomBox.SelectedItem);
                 FamilySuites.AddDeliveredPatient(newPatient);
-                deliveredPatientBindingSource.Add(newPatient);
                 this.Close();
             }
             else
@@ -93,22 +90,23 @@ namespace PatientManager
             }
         }
 
-        public void EditPatient(DeliveredPatient patient)
+        public void EditPatient(AnticipatedPatient patient)
         {
+            FamilySuites.AnticipatedPatients.Remove(patient);
             nameBox.Text = patient.LastName;
+            anticipatedRadio.Checked = true;
             AttendingBox.Text = patient.Attending;
             nicuCheck.Checked = patient.NICU;
             confidCheck.Checked = patient.Confidential;
             nonEngCheck.Checked = patient.LanguageBarrier;
             pihCheck.Checked = patient.PIH;
             medicaidCheck.Checked = patient.Medicaid;
-            deliveryDate.Value = patient.DeliveryDate;
-            //if (patient.DeliveryType == Vag)
-            //    vagRadio.Checked = true;
-            //else if (patient.DeliveryType == CSection)
-            //    csRadio.Checked = true;
-            //else if (patient.DeliveryType == Gyn)
-                //gynButton.Checked = true;
+            if (patient.AnticipatedDeliveryType.ToString() == "Vag")
+                vagRadio.Checked = true;
+            else if (patient.AnticipatedDeliveryType.ToString() == "CS")
+                csRadio.Checked = true;
+            else if (patient.AnticipatedDeliveryType.ToString() == "Gyn")
+                gynButton.Checked = true;
             AddButton.Visible = false;
             EditButton.Visible = true;
         }
@@ -131,6 +129,11 @@ namespace PatientManager
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            AddButton_Click(sender, e);
         }
     }
 }
