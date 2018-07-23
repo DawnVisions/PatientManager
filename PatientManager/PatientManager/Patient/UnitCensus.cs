@@ -20,11 +20,17 @@ namespace PatientManager.Patients
 		{
 			get
 			{
-				throw new NotImplementedException();
+                int total = DeliveredPatients.Count;
+                foreach (Patient patient in DeliveredPatients)
+                {
+                    if (patient.NICU)
+                        total--;
+                }
+                return total;
 			}
 			set
 			{
-				throw new NotImplementedException();
+                NurseryCount = value;
 			}
 		}
 
@@ -32,15 +38,13 @@ namespace PatientManager.Patients
 		{
 			get
 			{
-				throw new NotImplementedException();
+                return (DeliveredPatients.Count + AnticipatedPatients.Count) / 4;
 			}
 			set
 			{
-				throw new NotImplementedException();
+                MinNursesNeeded = value;
 			}
 		}
-
-		
 
 		public List<Newborn> NurseryCensus
 		{
@@ -57,20 +61,26 @@ namespace PatientManager.Patients
         public List<DeliveredPatient> DeliveredPatients = new List<DeliveredPatient>();
         public List<AnticipatedPatient> AnticipatedPatients = new List<AnticipatedPatient>();
 
-        public bool DischargePatient()
+        public bool DischargePatient(DeliveredPatient patient)
 		{
-			throw new NotImplementedException();
+            patient.Room.Available = true;
+            if (DeliveredPatients.Remove(patient))
+                return true;
+            else
+                return false;
 		}
 
         public bool AddAnticipatedPatient(AnticipatedPatient patient)
         {
             AnticipatedPatients.Add(patient);
+            patient.PreAssignedRoom.Available = false;
             return true;
         }
 
         public bool AddDeliveredPatient(DeliveredPatient patient)
         {
             DeliveredPatients.Add(patient);
+            patient.Room.Available = false;
             return true;
         }
 

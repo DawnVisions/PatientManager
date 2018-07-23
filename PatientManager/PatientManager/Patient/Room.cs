@@ -37,5 +37,10 @@ namespace PatientManager.Patients
             this.Available = true;
             this._blocked = false;
 		}
-	}
+
+        public override string ToString()
+        {
+            return RoomNumber.ToString();
+        }
+    }
 }

@@ -15,13 +15,16 @@ namespace PatientManager
     public partial class FormAddPatient : Form
     {
         UnitCensus FamilySuites;
-        public FormAddPatient(List<Room> AllRooms, UnitCensus FamilySuites)
+        BindingSource deliveredPatientBindingSource;
+        public FormAddPatient(List<Room> AllRooms, UnitCensus FamilySuites, BindingSource deliveredPatientBindingSource)
         {
             InitializeComponent();
             SetUpRoomComboBox(AllRooms);
             this.FamilySuites = FamilySuites;
+            this.deliveredPatientBindingSource = deliveredPatientBindingSource;
         }
 
+        //Setting up drop down box with only the available rooms
         void SetUpRoomComboBox(List<Room> AllRooms)
         {
             List<Room> AvailableRooms = new List<Room>();
@@ -34,18 +37,6 @@ namespace PatientManager
             }
             roomBox.DataSource = AvailableRooms;
             roomBox.DisplayMember = "RoomNumber";
-        }
-
-        void AddToAnticipatedCensus(AnticipatedPatient patient)
-        {
-            FamilySuites.AddAnticipatedPatient(patient);
-            patient.PreAssignedRoom.Available = false;
-        }
-
-        void AddToArrivedCensus(DeliveredPatient patient)
-        {
-            FamilySuites.AddDeliveredPatient(patient);
-            patient.Room.Available = false;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -75,7 +66,7 @@ namespace PatientManager
                     medicaidCheck.Checked,
                     (Room)roomBox.SelectedItem,
                     type);
-                AddToAnticipatedCensus(newPatient);
+                FamilySuites.AddAnticipatedPatient(newPatient);
                 this.Close();
             }
             else if (deliveredRadio.Checked)
@@ -91,13 +82,34 @@ namespace PatientManager
                     type, 
                     deliveryDate.Value, 
                     (Room)roomBox.SelectedItem);
-                AddToArrivedCensus(newPatient);
+                FamilySuites.AddDeliveredPatient(newPatient);
+                deliveredPatientBindingSource.Add(newPatient);
                 this.Close();
             }
             else
             {
                 typeGroup.ForeColor = System.Drawing.Color.Maroon;
             }
+        }
+
+        public void EditPatient(DeliveredPatient patient)
+        {
+            nameBox.Text = patient.LastName;
+            AttendingBox.Text = patient.Attending;
+            nicuCheck.Checked = patient.NICU;
+            confidCheck.Checked = patient.Confidential;
+            nonEngCheck.Checked = patient.LanguageBarrier;
+            pihCheck.Checked = patient.PIH;
+            medicaidCheck.Checked = patient.Medicaid;
+            deliveryDate.Value = patient.DeliveryDate;
+            //if (patient.DeliveryType == Vag)
+            //    vagRadio.Checked = true;
+            //else if (patient.DeliveryType == CSection)
+            //    csRadio.Checked = true;
+            //else if (patient.DeliveryType == Gyn)
+                //gynButton.Checked = true;
+            AddButton.Visible = false;
+            EditButton.Visible = true;
         }
 
         private void anticipatedRadio_CheckedChanged(object sender, EventArgs e)
