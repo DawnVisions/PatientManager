@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PatientManager.Patients;
 
@@ -16,12 +10,14 @@ namespace PatientManager
         public FormMain()
         {
             InitializeComponent();
+
+            //Set up data source for delivered patient and anticipated patient grids
             anticipatedPatientBindingSource.DataSource = FamilySuites.AnticipatedPatients;
             deliveredPatientBindingSource.DataSource = FamilySuites.DeliveredPatients;
         }
 
-        List<Room> AllRooms = CreateRooms();
         static UnitCensus FamilySuites = new UnitCensus();
+        List<Room> AllRooms = CreateRooms();
         static List<Room> CreateRooms()
         {
             List<Room> rooms = new List<Room>();
@@ -59,10 +55,6 @@ namespace PatientManager
             {
                 FamilySuites.AddDeliveredPatient(deliveredPatient);
             }
-            else
-            {
-                // TODO: Handle this error condition?
-            }
         }
 
         private void DischargeButton_Click(object sender, EventArgs e)
@@ -74,7 +66,7 @@ namespace PatientManager
                 return;
             }
 
-            var patient = selectedRows[0].DataBoundItem as DeliveredPatient;
+            DeliveredPatient patient = DeliveredGrid.CurrentRow.DataBoundItem as DeliveredPatient;
             if (patient == null) return;
 
             FamilySuites.DischargePatient(patient);
@@ -83,15 +75,11 @@ namespace PatientManager
         //Edit anticipated patient or change to delivered patient
         private void AnticipatedGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            AnticipatedPatient patientToEdit = (AnticipatedPatient)AnticipatedGrid.CurrentRow.DataBoundItem;
+            AnticipatedPatient patientToEdit = AnticipatedGrid.CurrentRow.DataBoundItem as AnticipatedPatient;
+            FamilySuites.AnticipatedPatients.Remove(patientToEdit);
             FormAddPatient editPatient = new FormAddPatient(AllRooms, patientToEdit);
             editPatient.SavedPatient += AddPatient_SavedPatient;
             editPatient.Show();
-        }
-
-        private void AnticipatedGrid_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-
         }
     }
 }

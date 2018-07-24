@@ -4,7 +4,7 @@ namespace PatientManager.Patients
 {
 	public class AnticipatedPatient : Patient, IHasRoom
 	{
-        public IDeliveryType AnticipatedDeliveryType { get; set; }
+        public IPatientType AnticipatedDeliveryType { get; set; }
 
         public Room Room { get; private set; }
 
@@ -17,7 +17,7 @@ namespace PatientManager.Patients
             bool pih,
             bool medicaid,
             Room preAssignedRoom,
-            IDeliveryType anticipatedDeliveryType) 
+            IPatientType anticipatedDeliveryType) 
             : base(lastName, attending, nicu, confidential, nonEng, pih, medicaid)
         {
             AnticipatedDeliveryType = anticipatedDeliveryType;

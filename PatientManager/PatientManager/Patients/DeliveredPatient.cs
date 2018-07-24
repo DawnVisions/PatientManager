@@ -4,8 +4,17 @@ namespace PatientManager.Patients
 {
 	public class DeliveredPatient : Patient, IHasRoom, IDischargable
 	{
-        public IDeliveryType PatientType { get; }
+        public IPatientType PatientType { get; }
+
         public DateTime DeliveryDate { get; set; }
+
+        public int CurrentLengthOfStay { get; set; }
+
+        public int PlannedLengthOfStay { get; set; }
+
+		public DateTime PlannedDischargeDay { get; set; }
+
+        public int Acuity { get; set; }
 
         private Room _room;
         public Room Room
@@ -21,27 +30,31 @@ namespace PatientManager.Patients
 			}
 		}
 
-		public int CurrentLengthOfStay { get; set; }
-        public int PlannedLOS { get; set; }
-
-		public DateTime PlannedDischargeDay { get; set; }
-
         public void Discharge()
         {
             this.Room.Available = true;
         }
 
-        public int Acuity { get; set; }
-
-		public DeliveredPatient(string lastName, string attending, bool nicu, bool confidential, bool nonEng, bool pih, bool medicaid, IDeliveryType delivType, DateTime date, Room room) : base(lastName, attending, nicu, confidential, nonEng, pih, medicaid)
+		public DeliveredPatient(
+            string lastName, 
+            string attending, 
+            bool nicu, 
+            bool confidential, 
+            bool nonEng, 
+            bool pih,
+            bool medicaid, 
+            IPatientType patientType, 
+            DateTime date,
+            Room room) 
+            : base(lastName, attending, nicu, confidential, nonEng, pih, medicaid)
         {
-            PatientType = delivType;
+            PatientType = patientType;
             DeliveryDate = date;
             Room = room;
             CurrentLengthOfStay = 0;
-            PlannedLOS = delivType.LengthOfStay;
-            PlannedDischargeDay = DateTime.Today.AddDays(PlannedLOS);
-            Acuity = delivType.InitialAcuity;
+            PlannedLengthOfStay = patientType.LengthOfStay;
+            PlannedDischargeDay = DateTime.Today.AddDays(PlannedLengthOfStay);
+            Acuity = patientType.InitialAcuity;
         }
 	}
 }

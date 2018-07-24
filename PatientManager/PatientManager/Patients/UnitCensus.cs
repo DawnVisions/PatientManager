@@ -6,7 +6,11 @@ namespace PatientManager.Patients
 {
 	public class UnitCensus
 	{
-		public static int Capacity = 27;
+		public BindingList<DeliveredPatient> DeliveredPatients = new BindingList<DeliveredPatient>();
+
+        public BindingList<AnticipatedPatient> AnticipatedPatients = new BindingList<AnticipatedPatient>();
+
+        public static int Capacity = 27;
 
 		public int TotalPatients => DeliveredPatients.Count;
 
@@ -28,29 +32,20 @@ namespace PatientManager.Patients
 			get => (DeliveredPatients.Count + AnticipatedPatients.Count) / 4;
 		}
 
-        public BindingList<DeliveredPatient> DeliveredPatients = new BindingList<DeliveredPatient>();
-        public BindingList<AnticipatedPatient> AnticipatedPatients = new BindingList<AnticipatedPatient>();
-
-        public void DischargePatient(DeliveredPatient patient)
-		{
-            patient.Discharge();
-            DeliveredPatients.Remove(patient);
-		}
-
         public void AddAnticipatedPatient(AnticipatedPatient patient)
         {
-            var existingAnticipatedPatient = AnticipatedPatients.FirstOrDefault(p => p.Id == patient.Id);
-            if (existingAnticipatedPatient != null)
-            {
-                AnticipatedPatients.Remove(existingAnticipatedPatient);
-            }
-
             AnticipatedPatients.Add(patient);
         }
 
         public void AddDeliveredPatient(DeliveredPatient patient)
         {
             DeliveredPatients.Add(patient);
+        }
+
+        public void DischargePatient(DeliveredPatient patient)
+        {
+            patient.Discharge();
+            DeliveredPatients.Remove(patient);
         }
 	}
 }

@@ -34,6 +34,7 @@ namespace PatientManager.Patients
 
         public Patient(Patient patient)
         {
+            Id = patient.Id;
             LastName = patient.LastName;
             Attending = patient.Attending;
             NICU = patient.NICU;

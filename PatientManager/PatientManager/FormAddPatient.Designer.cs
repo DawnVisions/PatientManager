@@ -193,7 +193,7 @@
             // 
             // deliveryDate
             // 
-            this.deliveryDate.CustomFormat = "M/d/yy      HH:mm";
+            this.deliveryDate.CustomFormat = "M/d     HH:mm";
             this.deliveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.deliveryDate.Location = new System.Drawing.Point(38, 304);
             this.deliveryDate.MinDate = new System.DateTime(2018, 7, 12, 0, 0, 0, 0);

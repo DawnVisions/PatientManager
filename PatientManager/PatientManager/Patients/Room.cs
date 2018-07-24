@@ -1,19 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PatientManager.Patients
 {
 	public class Room
 	{
-        bool _blocked;
-
         public int RoomNumber { get; }
 
 		public bool Available { get; set; }
 
 		public bool ShowerRoom { get; }
 
+        bool _blocked;
 		public bool Blocked
 		{
 			get
@@ -23,10 +20,7 @@ namespace PatientManager.Patients
 			set
 			{
                 _blocked = value;
-                if (_blocked == true)
-                {
-                    Available = false;
-                }
+                Available = _blocked;
 			}
 		}
 
