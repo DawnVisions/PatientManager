@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using PatientManager.Patients;
+using PatientManager.Shift;
 
 namespace PatientManager
 {
@@ -10,13 +11,16 @@ namespace PatientManager
         public FormMain()
         {
             InitializeComponent();
-
+            UpdateLabels();
             //Set up data source for delivered patient and anticipated patient grids
             anticipatedPatientBindingSource.DataSource = FamilySuites.AnticipatedPatients;
             deliveredPatientBindingSource.DataSource = FamilySuites.DeliveredPatients;
         }
-
+        
         static UnitCensus FamilySuites = new UnitCensus();
+
+        Shift.Day today = new Shift.Day(DateTime.Today);
+
         List<Room> AllRooms = CreateRooms();
         static List<Room> CreateRooms()
         {
@@ -38,6 +42,14 @@ namespace PatientManager
             return rooms;
         }
 
+        void UpdateLabels()
+        {
+            PPCensusLabel.Text = FamilySuites.TotalPatients.ToString();
+            NsyCensusLabel.Text = FamilySuites.NurseryCount.ToString();
+            DischargesLabel.Text = today.DischargesScheduled(FamilySuites).ToString();
+            MinNursesLabel.Text = FamilySuites.MinNursesNeeded.ToString();
+        }
+
         private void AddPatientButton_Click(object sender, EventArgs e)
         {
             FormAddPatient newPatient = new FormAddPatient(AllRooms);
@@ -55,6 +67,7 @@ namespace PatientManager
             {
                 FamilySuites.AddDeliveredPatient(deliveredPatient);
             }
+            UpdateLabels();
         }
 
         private void DischargeButton_Click(object sender, EventArgs e)
@@ -70,6 +83,7 @@ namespace PatientManager
             if (patient == null) return;
 
             FamilySuites.DischargePatient(patient);
+            UpdateLabels();
         }
 
         //Edit anticipated patient or change to delivered patient
