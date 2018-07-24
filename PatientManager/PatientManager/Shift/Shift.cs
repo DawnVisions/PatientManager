@@ -5,54 +5,33 @@ using PatientManager.Staff;
 
 namespace PatientManager.Shift
 {
-	public abstract class Shift
+	public class Shift
 	{
-		public List<CorePostpartum> PPNursesScheduled
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
-		}
+        public CCL ClinicalCareLeader { get; set; }
 
-		public List<CoreNursery> NBNScheduled
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
-		}
+        public List<CorePostpartum> PPNursesScheduled { get; set; }
 
-		public List<Nurse> OnCall
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
-		}
+		public List<CoreNursery> NBNScheduled { get; set; }
 
-		public List<PCT> PCTs
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
-		}
-	}
+		public List<Nurse> OnCall { get; set; }
+
+		public List<PCT> PCTs { get; set; }
+
+        public Shift(CCL Leader, List<CorePostpartum> PPnurses, List<CoreNursery> NsyNurses, List<PCT> Unlicensed)
+        {
+            this.ClinicalCareLeader = Leader;
+            this.PPNursesScheduled = PPnurses;
+            this.NBNScheduled = NsyNurses;
+            this.PCTs = Unlicensed; 
+        }
+
+        public Shift(CCL Leader, List<CorePostpartum> PPnurses, List<CoreNursery> NsyNurses, List<PCT> unlicensed, List<Nurse> onCall)
+        {
+            this.ClinicalCareLeader = Leader;
+            this.PPNursesScheduled = PPnurses;
+            this.NBNScheduled = NsyNurses;
+            this.PCTs = unlicensed;
+            this.OnCall = onCall;
+        }
+    }
 }

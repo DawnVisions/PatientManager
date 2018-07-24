@@ -52,7 +52,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.AttendingBox = new System.Windows.Forms.TextBox();
             this.roomBox = new System.Windows.Forms.ComboBox();
-            this.EditButton = new System.Windows.Forms.Button();
             this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.typeGroup.SuspendLayout();
             this.DeliveryGroup.SuspendLayout();
@@ -201,7 +200,7 @@
             this.deliveryDate.Name = "deliveryDate";
             this.deliveryDate.Size = new System.Drawing.Size(162, 20);
             this.deliveryDate.TabIndex = 3;
-            this.deliveryDate.Value = new System.DateTime(2018, 7, 19, 15, 50, 22, 0);
+            this.deliveryDate.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
             // 
             // groupBox2
             // 
@@ -294,17 +293,6 @@
             this.roomBox.Size = new System.Drawing.Size(110, 21);
             this.roomBox.TabIndex = 2;
             // 
-            // EditButton
-            // 
-            this.EditButton.Location = new System.Drawing.Point(529, 364);
-            this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(75, 23);
-            this.EditButton.TabIndex = 16;
-            this.EditButton.Text = "Edit Patient";
-            this.EditButton.UseVisualStyleBackColor = true;
-            this.EditButton.Visible = false;
-            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
-            // 
             // roomBindingSource
             // 
             this.roomBindingSource.DataSource = typeof(PatientManager.Patients.Room);
@@ -316,7 +304,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(631, 418);
-            this.Controls.Add(this.EditButton);
             this.Controls.Add(this.AttendingBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
@@ -346,8 +333,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.RadioButton anticipatedRadio;
         private System.Windows.Forms.RadioButton deliveredRadio;
@@ -371,6 +356,6 @@
         private System.Windows.Forms.TextBox AttendingBox;
         private System.Windows.Forms.ComboBox roomBox;
         private System.Windows.Forms.BindingSource roomBindingSource;
-        private System.Windows.Forms.Button EditButton;
+        public System.Windows.Forms.Button AddButton;
     }
 }

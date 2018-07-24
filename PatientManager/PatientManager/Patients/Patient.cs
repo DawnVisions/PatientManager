@@ -1,12 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using PatientManager.Staff;
 
 namespace PatientManager.Patients
 {
 	public abstract class Patient
 	{
+        public Guid Id { get; set; }
+
         public string LastName { get; }
 
 		public string Attending { get; set; }
@@ -21,10 +20,9 @@ namespace PatientManager.Patients
 
 		public bool Medicaid { get; }
 
-		public List<Nurse> PreviousNurses { get; set; }
-
         public Patient(string lastName, string attending, bool nicu, bool confidential, bool nonEng, bool pih, bool medicaid)
         {
+            Id = Guid.NewGuid();
             LastName = lastName;
             Attending = attending;
             NICU = nicu;

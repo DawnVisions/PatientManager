@@ -9,17 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PatientManager.Patients;
 
-
 namespace PatientManager
 {
+    public class SavedPatientEventArgs : EventArgs
+    {
+        public Patient Patient { get; }
+
+        public SavedPatientEventArgs(Patient patient)
+        {
+            Patient = patient;
+        }
+    }
+
     public partial class FormAddPatient : Form
     {
-        UnitCensus FamilySuites;
-        public FormAddPatient(List<Room> AllRooms, UnitCensus FamilySuites)
+        public event EventHandler<SavedPatientEventArgs> SavedPatient;
+
+        public FormAddPatient(List<Room> AllRooms, AnticipatedPatient existingPatient = null)
         {
             InitializeComponent();
             SetUpRoomComboBox(AllRooms);
-            this.FamilySuites = FamilySuites;
+
+            if (existingPatient != null)
+            {
+                LoadFromPatient(existingPatient);
+            }
         }
 
         //Setting up drop down box with only the available rooms
@@ -39,18 +53,18 @@ namespace PatientManager
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            DeliveryType type;
+            IDeliveryType type;
             if (vagRadio.Checked)
             {
-                type = new DeliveryType(DeliveryType.PatientType.Vag);
+                type = new VagDeliveryType();
             }
             else if (csRadio.Checked)
             {
-                type = new DeliveryType(DeliveryType.PatientType.CS);
+                type = new CSDeliveryType();
             }
             else
             {
-                type = new DeliveryType(DeliveryType.PatientType.Gyn);
+                type = new GynDeliveryType();
             }
             if (anticipatedRadio.Checked)
             {
@@ -64,8 +78,9 @@ namespace PatientManager
                     medicaidCheck.Checked,
                     (Room)roomBox.SelectedItem,
                     type);
-                FamilySuites.AddAnticipatedPatient(newPatient);
+
                 this.Close();
+                SavedPatient?.Invoke(this, new SavedPatientEventArgs(newPatient));
             }
             else if (deliveredRadio.Checked)
             {
@@ -80,8 +95,9 @@ namespace PatientManager
                     type, 
                     deliveryDate.Value, 
                     (Room)roomBox.SelectedItem);
-                FamilySuites.AddDeliveredPatient(newPatient);
+
                 this.Close();
+                SavedPatient?.Invoke(this, new SavedPatientEventArgs(newPatient));
             }
             else
             {
@@ -90,25 +106,22 @@ namespace PatientManager
             }
         }
 
-        public void EditPatient(AnticipatedPatient patient)
+        private void LoadFromPatient(AnticipatedPatient existingPatient)
         {
-            FamilySuites.AnticipatedPatients.Remove(patient);
-            nameBox.Text = patient.LastName;
+            AddButton.Text = "Edit Patient";
+            nameBox.Text = existingPatient.LastName;
             anticipatedRadio.Checked = true;
-            AttendingBox.Text = patient.Attending;
-            nicuCheck.Checked = patient.NICU;
-            confidCheck.Checked = patient.Confidential;
-            nonEngCheck.Checked = patient.LanguageBarrier;
-            pihCheck.Checked = patient.PIH;
-            medicaidCheck.Checked = patient.Medicaid;
-            if (patient.AnticipatedDeliveryType.ToString() == "Vag")
-                vagRadio.Checked = true;
-            else if (patient.AnticipatedDeliveryType.ToString() == "CS")
-                csRadio.Checked = true;
-            else if (patient.AnticipatedDeliveryType.ToString() == "Gyn")
-                gynButton.Checked = true;
-            AddButton.Visible = false;
-            EditButton.Visible = true;
+            AttendingBox.Text = existingPatient.Attending;
+            nicuCheck.Checked = existingPatient.NICU;
+            confidCheck.Checked = existingPatient.Confidential;
+            nonEngCheck.Checked = existingPatient.LanguageBarrier;
+            pihCheck.Checked = existingPatient.PIH;
+            medicaidCheck.Checked = existingPatient.Medicaid;
+
+            var patientType = existingPatient.AnticipatedDeliveryType.Type;
+            if (patientType == PatientType.Vag) vagRadio.Checked = true;
+            else if (patientType == PatientType.CS) csRadio.Checked = true;
+            else if (patientType == PatientType.Gyn) gynButton.Checked = true;
         }
 
         //Hide delivery date if patient is anticipated
@@ -129,11 +142,6 @@ namespace PatientManager
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void EditButton_Click(object sender, EventArgs e)
-        {
-            AddButton_Click(sender, e);
         }
     }
 }
