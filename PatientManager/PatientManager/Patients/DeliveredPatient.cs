@@ -10,9 +10,24 @@ namespace PatientManager.Patients
 
         public int CurrentLengthOfStay { get; set; }
 
-        public int PlannedLengthOfStay { get; set; }
+        private int _plannedLengthOfStay;
+        public int PlannedLengthOfStay
+        {
+            get => _plannedLengthOfStay;
+            set
+            {
+                _plannedLengthOfStay = value;
+                if (this.Medicaid && DeliveryDate.TimeOfDay.Hours < 17)
+                {
+                     _plannedLengthOfStay -= 1;
+                }
+            }
+        }
 
-		public DateTime PlannedDischargeDay { get; set; }
+        public DateTime PlannedDischargeDay
+        {
+            get => this.DeliveryDate.AddDays(PlannedLengthOfStay);
+        }
 
         public int Acuity { get; set; }
 
@@ -53,7 +68,6 @@ namespace PatientManager.Patients
             Room = room;
             CurrentLengthOfStay = 0;
             PlannedLengthOfStay = patientType.LengthOfStay;
-            PlannedDischargeDay = DateTime.Today.AddDays(PlannedLengthOfStay);
             Acuity = patientType.InitialAcuity;
         }
 	}

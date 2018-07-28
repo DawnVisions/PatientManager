@@ -12,7 +12,8 @@ namespace PatientManager
         {
             InitializeComponent();
             UpdateLabels();
-            //Set up data source for delivered patient and anticipated patient grids
+
+            //Sets up data source for delivered patient and anticipated patient grids
             anticipatedPatientBindingSource.DataSource = FamilySuites.AnticipatedPatients;
             deliveredPatientBindingSource.DataSource = FamilySuites.DeliveredPatients;
         }
