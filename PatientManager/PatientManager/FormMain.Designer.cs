@@ -67,7 +67,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.StaffOnShiftButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.MinNursesLabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -448,15 +448,16 @@
             this.button1.Text = "Block Room";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // StaffOnShiftButton
             // 
-            this.button2.Location = new System.Drawing.Point(1664, 1254);
-            this.button2.Margin = new System.Windows.Forms.Padding(6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(236, 102);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "Staff Assignments";
-            this.button2.UseVisualStyleBackColor = true;
+            this.StaffOnShiftButton.Location = new System.Drawing.Point(1664, 1254);
+            this.StaffOnShiftButton.Margin = new System.Windows.Forms.Padding(6);
+            this.StaffOnShiftButton.Name = "StaffOnShiftButton";
+            this.StaffOnShiftButton.Size = new System.Drawing.Size(236, 102);
+            this.StaffOnShiftButton.TabIndex = 28;
+            this.StaffOnShiftButton.Text = "Staff Assignments";
+            this.StaffOnShiftButton.UseVisualStyleBackColor = true;
+            this.StaffOnShiftButton.Click += new System.EventHandler(this.StaffOnShiftButton_Click);
             // 
             // groupBox1
             // 
@@ -610,7 +611,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2518, 1510);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.StaffOnShiftButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.UAPListBox);
             this.Controls.Add(this.PPListBox);
@@ -687,7 +688,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button StaffOnShiftButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label MinNursesLabel;
         private System.Windows.Forms.Label label10;

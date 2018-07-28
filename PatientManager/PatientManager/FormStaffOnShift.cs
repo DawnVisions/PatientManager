@@ -16,9 +16,11 @@ namespace PatientManager
         public FormStaffOnShift()
         {
             InitializeComponent();
+            List<CCL> CCLs = SetUpCCLs();
+            PutStaffInLists(CCLs);
         }
 
-        void SetUpStaff()
+        List<CCL> SetUpCCLs()
         {
             List<CCL> CCLs = new List<CCL>();
             CCL JessicaJ = new CCL("Jessica J", true);
@@ -27,9 +29,16 @@ namespace PatientManager
             CCLs.Add(JessicaJ);
             CCLs.Add(AprilG);
             CCLs.Add(MichelleS);
+            return CCLs;
+        }
 
-            List<Nurse> RNs = new List<Nurse>();
-            
+
+        void PutStaffInLists(List<CCL> CCLs)
+        {
+            foreach (Nurse nurse in CCLs)
+            {
+                CCLcheckedListBox.Items.Add(nurse);
+            }
         }
     }
 }

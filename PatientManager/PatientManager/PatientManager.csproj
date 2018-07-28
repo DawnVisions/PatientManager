@@ -123,6 +123,12 @@
     <None Include="Properties\DataSources\PatientManager.Patients.Patient.datasource" />
     <None Include="Properties\DataSources\PatientManager.Patients.Room.datasource" />
     <None Include="Properties\DataSources\PatientManager.Patients.UnitCensus.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Staff.CCL.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Staff.CoreNursery.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Staff.CorePostpartum.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Staff.Nurse.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Staff.PCT.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Staff.Staff.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

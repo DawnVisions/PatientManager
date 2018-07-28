@@ -96,5 +96,11 @@ namespace PatientManager
             editPatient.SavedPatient += AddPatient_SavedPatient;
             editPatient.Show();
         }
+
+        private void StaffOnShiftButton_Click(object sender, EventArgs e)
+        {
+            FormStaffOnShift shiftStaff = new FormStaffOnShift();
+            shiftStaff.Show();
+        }
     }
 }
