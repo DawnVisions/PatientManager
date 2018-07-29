@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using PatientManager.Patients;
 using PatientManager.Shift;
+using System.ComponentModel;
 
 namespace PatientManager.Shift
 {
@@ -12,22 +13,23 @@ namespace PatientManager.Shift
         Shift Days;
         Shift Nights;
 
-        public void UpdateLOS(List<DeliveredPatient> patients)
+        public void UpdateLOS(BindingList<DeliveredPatient> patients)
         {
             foreach (DeliveredPatient patient in patients)
             {
-                patient.CurrentLengthOfStay += 1;
+                patient.CurrentLengthOfStay = (int)(Date.Date - patient.DeliveryDate.Date).TotalDays;
             }
         }
 
-        public int DischargesScheduled(UnitCensus familySuites)
+        public int DischargesScheduled(BindingList<DeliveredPatient> patients)
         {
             int _dischargesScheduled = 0;
-            foreach (DeliveredPatient patient in familySuites.DeliveredPatients)
+            foreach (DeliveredPatient patient in patients)
             {
-                if (patient.PlannedDischargeDay == Date)
+                if (patient.PlannedDischargeDay.Date == this.Date.Date)
                 {
                     _dischargesScheduled += 1;
+                    patient.DischargeToday = true;
                 }
             }
             return _dischargesScheduled;
@@ -38,6 +40,13 @@ namespace PatientManager.Shift
             this.Date = date;
             //Days = new Shift();
             //Nights = new Shift();
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Date.DayOfWeek + " " + Date.ToLongDateString());
+            return sb.ToString();
         }
 	}
 }

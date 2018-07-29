@@ -27,10 +27,11 @@ namespace PatientManager.Patients
 			}
 		}
 
-		public int MinNursesNeeded
-		{
-			get => (DeliveredPatients.Count + AnticipatedPatients.Count) / 4;
-		}
+        public int MinNursesNeeded()
+        {
+            int min = (int)Math.Ceiling((double)(DeliveredPatients.Count + AnticipatedPatients.Count) / 4);
+            return min;
+        }
 
         public void AddAnticipatedPatient(AnticipatedPatient patient)
         {

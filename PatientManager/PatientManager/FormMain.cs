@@ -11,35 +11,31 @@ namespace PatientManager
         public FormMain()
         {
             InitializeComponent();
+
             UpdateLabels();
 
-            //Sets up data source for delivered patient and anticipated patient grids
+            StartNewDay();
+
+            //Sets up data source for delivered patient and anticipated patient data grids
             anticipatedPatientBindingSource.DataSource = FamilySuites.AnticipatedPatients;
             deliveredPatientBindingSource.DataSource = FamilySuites.DeliveredPatients;
         }
-        
-        static UnitCensus FamilySuites = new UnitCensus();
 
         Shift.Day today = new Shift.Day(DateTime.Today);
+
+        static UnitCensus FamilySuites = new UnitCensus();
 
         List<Room> AllRooms = CreateRooms();
         static List<Room> CreateRooms()
         {
             List<Room> rooms = new List<Room>();
-            Room rm5620 = new Room(5620, false);
-            Room rm5621 = new Room(5621, true);
-            Room rm5622 = new Room(5622, false);
-            Room rm5624 = new Room(5624, false);
-            Room rm5625 = new Room(5625, true);
-            Room rm5626 = new Room(5626, false);
-            Room rm5627 = new Room(5627, false);
-            rooms.Add(rm5620);
-            rooms.Add(rm5621);
-            rooms.Add(rm5622);
-            rooms.Add(rm5624);
-            rooms.Add(rm5625);
-            rooms.Add(rm5626);
-            rooms.Add(rm5627);
+            rooms.Add(new Room(5620, showerRoom: false));
+            rooms.Add(new Room(5621, showerRoom: true));
+            rooms.Add(new Room(5622, showerRoom: false));
+            rooms.Add(new Room(5624, showerRoom: false));
+            rooms.Add(new Room(5625, showerRoom: true));
+            rooms.Add(new Room(5626, showerRoom: false));
+            rooms.Add(new Room(5627, showerRoom: false));
             return rooms;
         }
 
@@ -47,8 +43,15 @@ namespace PatientManager
         {
             PPCensusLabel.Text = FamilySuites.TotalPatients.ToString();
             NsyCensusLabel.Text = FamilySuites.NurseryCount.ToString();
-            DischargesLabel.Text = today.DischargesScheduled(FamilySuites).ToString();
-            MinNursesLabel.Text = FamilySuites.MinNursesNeeded.ToString();
+            MinNursesLabel.Text = FamilySuites.MinNursesNeeded().ToString();
+            DischargesLabel.Text = today.DischargesScheduled(FamilySuites.DeliveredPatients).ToString();
+            today.UpdateLOS(FamilySuites.DeliveredPatients);
+        }
+
+        void StartNewDay()
+        {
+            DayLabel.Text = today.ToString();
+            
         }
 
         private void AddPatientButton_Click(object sender, EventArgs e)

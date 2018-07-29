@@ -36,101 +36,101 @@
             this.NSYcheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.PCTcheckedListBox = new System.Windows.Forms.CheckedListBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.onCallTextBox = new System.Windows.Forms.TextBox();
+            this.AddToShift = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 33);
+            this.label1.Location = new System.Drawing.Point(66, 63);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 13);
+            this.label1.Size = new System.Drawing.Size(54, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "CCL";
             // 
             // CCLcheckedListBox
             // 
             this.CCLcheckedListBox.FormattingEnabled = true;
-            this.CCLcheckedListBox.Location = new System.Drawing.Point(36, 59);
+            this.CCLcheckedListBox.Location = new System.Drawing.Point(72, 113);
+            this.CCLcheckedListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.CCLcheckedListBox.Name = "CCLcheckedListBox";
-            this.CCLcheckedListBox.Size = new System.Drawing.Size(186, 94);
+            this.CCLcheckedListBox.Size = new System.Drawing.Size(368, 160);
             this.CCLcheckedListBox.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 178);
+            this.label2.Location = new System.Drawing.Point(72, 342);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.Size = new System.Drawing.Size(121, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Postpartum";
             // 
             // RNcheckedListBox
             // 
             this.RNcheckedListBox.FormattingEnabled = true;
-            this.RNcheckedListBox.Location = new System.Drawing.Point(36, 204);
+            this.RNcheckedListBox.Location = new System.Drawing.Point(72, 392);
+            this.RNcheckedListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.RNcheckedListBox.Name = "RNcheckedListBox";
-            this.RNcheckedListBox.Size = new System.Drawing.Size(186, 484);
+            this.RNcheckedListBox.Size = new System.Drawing.Size(368, 914);
             this.RNcheckedListBox.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(396, 33);
+            this.label3.Location = new System.Drawing.Point(792, 63);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.Size = new System.Drawing.Size(87, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Nursery";
             // 
             // NSYcheckedListBox
             // 
             this.NSYcheckedListBox.FormattingEnabled = true;
-            this.NSYcheckedListBox.Location = new System.Drawing.Point(399, 59);
+            this.NSYcheckedListBox.Location = new System.Drawing.Point(798, 113);
+            this.NSYcheckedListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.NSYcheckedListBox.Name = "NSYcheckedListBox";
-            this.NSYcheckedListBox.Size = new System.Drawing.Size(186, 94);
+            this.NSYcheckedListBox.Size = new System.Drawing.Size(368, 160);
             this.NSYcheckedListBox.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(399, 178);
+            this.label4.Location = new System.Drawing.Point(798, 342);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.Size = new System.Drawing.Size(138, 25);
             this.label4.TabIndex = 6;
             this.label4.Text = "PCTs / HUAs";
             // 
             // PCTcheckedListBox
             // 
             this.PCTcheckedListBox.FormattingEnabled = true;
-            this.PCTcheckedListBox.Location = new System.Drawing.Point(399, 204);
+            this.PCTcheckedListBox.Location = new System.Drawing.Point(798, 392);
+            this.PCTcheckedListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.PCTcheckedListBox.Name = "PCTcheckedListBox";
-            this.PCTcheckedListBox.Size = new System.Drawing.Size(186, 259);
+            this.PCTcheckedListBox.Size = new System.Drawing.Size(368, 472);
             this.PCTcheckedListBox.TabIndex = 7;
             // 
-            // label5
+            // AddToShift
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(399, 490);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "On Call";
-            // 
-            // onCallTextBox
-            // 
-            this.onCallTextBox.Location = new System.Drawing.Point(399, 516);
-            this.onCallTextBox.Name = "onCallTextBox";
-            this.onCallTextBox.Size = new System.Drawing.Size(186, 20);
-            this.onCallTextBox.TabIndex = 9;
+            this.AddToShift.Location = new System.Drawing.Point(1055, 1178);
+            this.AddToShift.Name = "AddToShift";
+            this.AddToShift.Size = new System.Drawing.Size(201, 101);
+            this.AddToShift.TabIndex = 8;
+            this.AddToShift.Text = "Add Staff";
+            this.AddToShift.UseVisualStyleBackColor = true;
+            this.AddToShift.Click += new System.EventHandler(this.AddToShift_Click);
             // 
             // FormStaffOnShift
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 716);
-            this.Controls.Add(this.onCallTextBox);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(1436, 1377);
+            this.Controls.Add(this.AddToShift);
             this.Controls.Add(this.PCTcheckedListBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.NSYcheckedListBox);
@@ -139,6 +139,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CCLcheckedListBox);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FormStaffOnShift";
             this.Text = "Scheduled Staff";
             this.ResumeLayout(false);
@@ -156,7 +157,6 @@
         private System.Windows.Forms.CheckedListBox NSYcheckedListBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckedListBox PCTcheckedListBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox onCallTextBox;
+        private System.Windows.Forms.Button AddToShift;
     }
 }

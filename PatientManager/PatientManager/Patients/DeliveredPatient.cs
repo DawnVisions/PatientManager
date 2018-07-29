@@ -29,6 +29,8 @@ namespace PatientManager.Patients
             get => this.DeliveryDate.AddDays(PlannedLengthOfStay);
         }
 
+        public bool DischargeToday { get; set; }
+
         public int Acuity { get; set; }
 
         private Room _room;
