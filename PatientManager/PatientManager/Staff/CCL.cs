@@ -1,14 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PatientManager.Staff
 {
 	public class CCL : Nurse
 	{
-		public CCL(string name, bool canOrient)
+		public CCL(string name) : base (name)
 		{
-			throw new NotImplementedException();
+            MyRoles.Add(Roles.Postpartum);
+            MyRoles.Add(Roles.Unlicensed);
+            MyRoles.Add(Roles.Nursery);
 		}
 	}
 }

@@ -1,26 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using PatientManager.Shift;
 
 namespace PatientManager.Staff
 {
-	public class PCT
+	public class PCT : Staff
 	{
-		public string DeskPreference
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
-		}
-
-		public PCT(string name, bool canOrient, string deskPreference)
-		{
-			throw new NotImplementedException();
-		}
-	}
+        public PCT(string name) : base(name)
+        {
+            MyRoles.Add(Roles.Unlicensed);
+        }
+    }
 }

@@ -23,9 +23,9 @@ namespace PatientManager
         List<CCL> SetUpCCLs()
         {
             List<CCL> CCLs = new List<CCL>();
-            CCL JessicaJ = new CCL("Jessica J", true);
-            CCL AprilG = new CCL("April G", true);
-            CCL MichelleS = new CCL("Michelle S", true);
+            CCL JessicaJ = new CCL("Jessica J");
+            CCL AprilG = new CCL("April G");
+            CCL MichelleS = new CCL("Michelle S");
             CCLs.Add(JessicaJ);
             CCLs.Add(AprilG);
             CCLs.Add(MichelleS);

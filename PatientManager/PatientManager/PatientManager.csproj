@@ -87,10 +87,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SavedPatientEventArgs.cs" />
     <Compile Include="Shift\Day.cs" />
-    <Compile Include="Shift\INurseryRole.cs" />
-    <Compile Include="Shift\IPostpartumRole.cs" />
-    <Compile Include="Shift\IRole.cs" />
-    <Compile Include="Shift\IUnlicensedRole.cs" />
     <Compile Include="Shift\Shift.cs" />
     <Compile Include="Staff\CCL.cs" />
     <Compile Include="Staff\CoreNursery.cs" />

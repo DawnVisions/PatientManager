@@ -1,16 +1,17 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using PatientManager.Shift;
-using PatientManager.Patients;
 
 namespace PatientManager.Staff
 {
 	public class CorePostpartum : Nurse
 	{
-		public CorePostpartum(string name, bool canOrient, bool canWorkNursery)
+        public CorePostpartum(string name, bool canWorkNursery) : base (name)
 		{
-			throw new NotImplementedException();
+            MyRoles.Add(Roles.Postpartum);
+            MyRoles.Add(Roles.Unlicensed);
+            if (canWorkNursery)
+            {
+                MyRoles.Add(Roles.Nursery);
+            }
 		}
     }
 }
