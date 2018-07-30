@@ -43,12 +43,9 @@
             this.DayLabel = new System.Windows.Forms.Label();
             this.ShiftLabel = new System.Windows.Forms.Label();
             this.NextButton = new System.Windows.Forms.Button();
-            this.PreviousButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.CCLListBox = new System.Windows.Forms.ListBox();
             this.NurseryListBox = new System.Windows.Forms.ListBox();
             this.PPListBox = new System.Windows.Forms.ListBox();
             this.UAPListBox = new System.Windows.Forms.ListBox();
@@ -81,7 +78,6 @@
             this.nICUDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.deliveryDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PlannedDischargeDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attendingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.acuityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pIHDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -128,7 +124,6 @@
             this.nICUDataGridViewCheckBoxColumn,
             this.deliveryDateDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn10,
-            this.PlannedDischargeDay,
             this.attendingDataGridViewTextBoxColumn,
             this.acuityDataGridViewTextBoxColumn,
             this.pIHDataGridViewCheckBoxColumn});
@@ -233,9 +228,9 @@
             this.ShiftLabel.Location = new System.Drawing.Point(1250, 17);
             this.ShiftLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.ShiftLabel.Name = "ShiftLabel";
-            this.ShiftLabel.Size = new System.Drawing.Size(89, 37);
+            this.ShiftLabel.Size = new System.Drawing.Size(81, 37);
             this.ShiftLabel.TabIndex = 12;
-            this.ShiftLabel.Text = "Days";
+            this.ShiftLabel.Text = "Shift";
             // 
             // NextButton
             // 
@@ -247,16 +242,6 @@
             this.NextButton.Text = "Next Shift";
             this.NextButton.UseVisualStyleBackColor = true;
             // 
-            // PreviousButton
-            // 
-            this.PreviousButton.Location = new System.Drawing.Point(800, 17);
-            this.PreviousButton.Margin = new System.Windows.Forms.Padding(6);
-            this.PreviousButton.Name = "PreviousButton";
-            this.PreviousButton.Size = new System.Drawing.Size(150, 44);
-            this.PreviousButton.TabIndex = 15;
-            this.PreviousButton.Text = "Previous Shift";
-            this.PreviousButton.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -266,16 +251,6 @@
             this.label3.Size = new System.Drawing.Size(137, 25);
             this.label3.TabIndex = 16;
             this.label3.Text = "Nursery Staff";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1998, 94);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(207, 25);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Clinical Care Leader";
             // 
             // label5
             // 
@@ -296,16 +271,6 @@
             this.label6.Size = new System.Drawing.Size(169, 25);
             this.label6.TabIndex = 19;
             this.label6.Text = "Unlicensed Staff";
-            // 
-            // CCLListBox
-            // 
-            this.CCLListBox.FormattingEnabled = true;
-            this.CCLListBox.ItemHeight = 25;
-            this.CCLListBox.Location = new System.Drawing.Point(2004, 125);
-            this.CCLListBox.Margin = new System.Windows.Forms.Padding(6);
-            this.CCLListBox.Name = "CCLListBox";
-            this.CCLListBox.Size = new System.Drawing.Size(314, 54);
-            this.CCLListBox.TabIndex = 20;
             // 
             // NurseryListBox
             // 
@@ -530,22 +495,27 @@
             // 
             // HomeToday
             // 
+            this.HomeToday.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.HomeToday.DataPropertyName = "DischargeToday";
             this.HomeToday.FalseValue = "false";
-            this.HomeToday.HeaderText = "H";
+            this.HomeToday.HeaderText = "Home";
             this.HomeToday.Name = "HomeToday";
+            this.HomeToday.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.HomeToday.TrueValue = "true";
+            this.HomeToday.Width = 74;
             // 
             // roomDataGridViewTextBoxColumn
             // 
+            this.roomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.roomDataGridViewTextBoxColumn.DataPropertyName = "Room";
             this.roomDataGridViewTextBoxColumn.HeaderText = "Room";
             this.roomDataGridViewTextBoxColumn.Name = "roomDataGridViewTextBoxColumn";
             this.roomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.roomDataGridViewTextBoxColumn.Width = 50;
+            this.roomDataGridViewTextBoxColumn.Width = 113;
             // 
             // lastNameDataGridViewTextBoxColumn
             // 
+            this.lastNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
             this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
@@ -554,6 +524,7 @@
             // 
             // patientTypeDataGridViewTextBoxColumn
             // 
+            this.patientTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.patientTypeDataGridViewTextBoxColumn.DataPropertyName = "PatientType";
             this.patientTypeDataGridViewTextBoxColumn.HeaderText = "Type";
             this.patientTypeDataGridViewTextBoxColumn.Name = "patientTypeDataGridViewTextBoxColumn";
@@ -562,50 +533,50 @@
             // 
             // nICUDataGridViewCheckBoxColumn
             // 
+            this.nICUDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.nICUDataGridViewCheckBoxColumn.DataPropertyName = "NICU";
             this.nICUDataGridViewCheckBoxColumn.HeaderText = "NICU";
             this.nICUDataGridViewCheckBoxColumn.Name = "nICUDataGridViewCheckBoxColumn";
-            this.nICUDataGridViewCheckBoxColumn.Width = 45;
+            this.nICUDataGridViewCheckBoxColumn.Width = 68;
             // 
             // deliveryDateDataGridViewTextBoxColumn
             // 
+            this.deliveryDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.deliveryDateDataGridViewTextBoxColumn.DataPropertyName = "DeliveryDate";
             this.deliveryDateDataGridViewTextBoxColumn.HeaderText = "DeliveryDate";
             this.deliveryDateDataGridViewTextBoxColumn.Name = "deliveryDateDataGridViewTextBoxColumn";
+            this.deliveryDateDataGridViewTextBoxColumn.Width = 180;
             // 
             // dataGridViewTextBoxColumn10
             // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewTextBoxColumn10.DataPropertyName = "CurrentLengthOfStay";
             this.dataGridViewTextBoxColumn10.HeaderText = "LOS";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.Width = 40;
-            // 
-            // PlannedDischargeDay
-            // 
-            this.PlannedDischargeDay.DataPropertyName = "PlannedDischargeDay";
-            this.PlannedDischargeDay.HeaderText = "PlannedDischargeDay";
-            this.PlannedDischargeDay.Name = "PlannedDischargeDay";
-            this.PlannedDischargeDay.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 99;
             // 
             // attendingDataGridViewTextBoxColumn
             // 
+            this.attendingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.attendingDataGridViewTextBoxColumn.DataPropertyName = "Attending";
             this.attendingDataGridViewTextBoxColumn.HeaderText = "Attending";
             this.attendingDataGridViewTextBoxColumn.Name = "attendingDataGridViewTextBoxColumn";
             // 
             // acuityDataGridViewTextBoxColumn
             // 
+            this.acuityDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.acuityDataGridViewTextBoxColumn.DataPropertyName = "Acuity";
             this.acuityDataGridViewTextBoxColumn.HeaderText = "Acuity";
             this.acuityDataGridViewTextBoxColumn.Name = "acuityDataGridViewTextBoxColumn";
-            this.acuityDataGridViewTextBoxColumn.Width = 40;
+            this.acuityDataGridViewTextBoxColumn.Width = 116;
             // 
             // pIHDataGridViewCheckBoxColumn
             // 
+            this.pIHDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.pIHDataGridViewCheckBoxColumn.DataPropertyName = "PIH";
             this.pIHDataGridViewCheckBoxColumn.HeaderText = "PIH";
             this.pIHDataGridViewCheckBoxColumn.Name = "pIHDataGridViewCheckBoxColumn";
-            this.pIHDataGridViewCheckBoxColumn.Width = 45;
+            this.pIHDataGridViewCheckBoxColumn.Width = 52;
             // 
             // FormMain
             // 
@@ -619,12 +590,9 @@
             this.Controls.Add(this.UAPListBox);
             this.Controls.Add(this.PPListBox);
             this.Controls.Add(this.NurseryListBox);
-            this.Controls.Add(this.CCLListBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.PreviousButton);
             this.Controls.Add(this.NextButton);
             this.Controls.Add(this.ShiftLabel);
             this.Controls.Add(this.DayLabel);
@@ -667,12 +635,9 @@
         private System.Windows.Forms.Label DayLabel;
         private System.Windows.Forms.Label ShiftLabel;
         private System.Windows.Forms.Button NextButton;
-        private System.Windows.Forms.Button PreviousButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ListBox CCLListBox;
         private System.Windows.Forms.ListBox NurseryListBox;
         private System.Windows.Forms.ListBox PPListBox;
         private System.Windows.Forms.ListBox UAPListBox;
@@ -705,7 +670,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn nICUDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PlannedDischargeDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn attendingDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn acuityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn pIHDataGridViewCheckBoxColumn;

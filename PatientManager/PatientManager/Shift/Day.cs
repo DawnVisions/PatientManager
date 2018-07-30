@@ -10,8 +10,8 @@ namespace PatientManager.Shift
     public class Day
     {
         DateTime Date { get; set; }
-        Shift Days;
-        Shift Nights;
+        public Shift Days;
+        public Shift Nights;
 
         public void UpdateLOS(BindingList<DeliveredPatient> patients)
         {
@@ -38,8 +38,8 @@ namespace PatientManager.Shift
         public Day(DateTime date)
         {
             this.Date = date;
-            //Days = new Shift();
-            //Nights = new Shift();
+            Days = new Shift(Shift.DayOrNight.Days);
+            Nights = new Shift(Shift.DayOrNight.Nights);
         }
 
         public override string ToString()

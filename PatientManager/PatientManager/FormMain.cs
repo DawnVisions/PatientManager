@@ -51,7 +51,7 @@ namespace PatientManager
         void StartNewDay()
         {
             DayLabel.Text = today.ToString();
-            
+            ShiftLabel.Text = today.Days.ToString();
         }
 
         private void AddPatientButton_Click(object sender, EventArgs e)

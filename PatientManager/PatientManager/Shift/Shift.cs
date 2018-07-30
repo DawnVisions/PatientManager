@@ -7,31 +7,30 @@ namespace PatientManager.Shift
 {
 	public class Shift
 	{
-        public CCL ClinicalCareLeader { get; set; }
+        public enum DayOrNight { Days, Nights}
 
-        public List<CorePostpartum> PPNursesScheduled { get; set; }
+        public enum PPAssignments { CCL, Floor, Nursery, OnCall, Recovery, Pulled, Ill, Other}
+
+        public enum PCTAssignments { HUA, PCT}
+
+        public enum NsyAssignments { Nursery, NsyAdmit, NICU, Intermediate}
+
+        public DayOrNight ThisShift { get;  }
+
+        public List<Nurse> PPNursesScheduled { get; set; }
 
 		public List<CoreNursery> NBNScheduled { get; set; }
 
-		public List<Nurse> OnCall { get; set; }
-
 		public List<PCT> PCTs { get; set; }
 
-        public Shift(CCL Leader, List<CorePostpartum> PPnurses, List<CoreNursery> NsyNurses, List<PCT> Unlicensed)
+        public Shift (DayOrNight shift)
         {
-            this.ClinicalCareLeader = Leader;
-            this.PPNursesScheduled = PPnurses;
-            this.NBNScheduled = NsyNurses;
-            this.PCTs = Unlicensed; 
+            ThisShift = shift;
         }
 
-        public Shift(CCL Leader, List<CorePostpartum> PPnurses, List<CoreNursery> NsyNurses, List<PCT> unlicensed, List<Nurse> onCall)
+        public override string ToString()
         {
-            this.ClinicalCareLeader = Leader;
-            this.PPNursesScheduled = PPnurses;
-            this.NBNScheduled = NsyNurses;
-            this.PCTs = unlicensed;
-            this.OnCall = onCall;
+            return ThisShift.ToString();
         }
     }
 }

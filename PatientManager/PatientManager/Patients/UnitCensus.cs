@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Linq;
+using PatientManager.Patients;
 
 namespace PatientManager.Patients
 {
@@ -19,9 +20,10 @@ namespace PatientManager.Patients
 			get
 			{
                 int total = DeliveredPatients.Count;
-                foreach (Patient patient in DeliveredPatients)
+                foreach (DeliveredPatient patient in DeliveredPatients)
                 {
                     if (patient.NICU) total--;
+                    if (patient.PatientType.Type == PatientTypesEnum.Gyn) total--;
                 }
                 return total;
 			}

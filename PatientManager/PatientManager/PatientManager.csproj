@@ -79,7 +79,7 @@
     <Compile Include="Patients\DeliveredPatient.cs" />
     <Compile Include="Patients\IDischargable.cs" />
     <Compile Include="Patients\IHasRoom.cs" />
-    <Compile Include="Patients\IPatientType.cs" />
+    <Compile Include="Patients\PatientType.cs" />
     <Compile Include="Patients\Patient.cs" />
     <Compile Include="Patients\Room.cs" />
     <Compile Include="Patients\UnitCensus.cs" />

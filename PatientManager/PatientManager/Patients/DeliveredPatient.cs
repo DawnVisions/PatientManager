@@ -4,7 +4,7 @@ namespace PatientManager.Patients
 {
 	public class DeliveredPatient : Patient, IHasRoom, IDischargable
 	{
-        public IPatientType PatientType { get; }
+        public PatientType PatientType { get; }
 
         public DateTime DeliveryDate { get; set; }
 
@@ -60,7 +60,7 @@ namespace PatientManager.Patients
             bool nonEng, 
             bool pih,
             bool medicaid, 
-            IPatientType patientType, 
+            PatientType patientType, 
             DateTime date,
             Room room) 
             : base(lastName, attending, nicu, confidential, nonEng, pih, medicaid)

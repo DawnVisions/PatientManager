@@ -37,10 +37,10 @@ namespace PatientManager
                 roomBox.SelectedItem = existingPatient.Room;
             }
 
-            PatientType patientType = existingPatient.AnticipatedDeliveryType.Type;
-            if (patientType == PatientType.Vag) vagRadio.Checked = true;
-            else if (patientType == PatientType.CS) csRadio.Checked = true;
-            else if (patientType == PatientType.Gyn) gynButton.Checked = true;
+            PatientTypesEnum patientType = existingPatient.AnticipatedDeliveryType.Type;
+            if (patientType == PatientTypesEnum.Vag) vagRadio.Checked = true;
+            else if (patientType == PatientTypesEnum.CS) csRadio.Checked = true;
+            else if (patientType == PatientTypesEnum.Gyn) gynButton.Checked = true;
         }
         
         void SetUpRoomComboBox(List<Room> AllRooms) //Setting up drop down box with only the available rooms
@@ -59,7 +59,7 @@ namespace PatientManager
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            IPatientType type;
+            PatientType type;
             if (vagRadio.Checked)
             {
                 type = new VagDeliveryType();
