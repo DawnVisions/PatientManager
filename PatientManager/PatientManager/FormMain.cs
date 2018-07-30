@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using PatientManager.Patients;
-using PatientManager.Shift;
+using PatientManager.Shifts;
 
 namespace PatientManager
 {
@@ -12,18 +12,44 @@ namespace PatientManager
         {
             InitializeComponent();
 
-            UpdateLabels();
+            ThisDay = new Shifts.Day(DateTime.Today);
+            CurrentShift = NewShift();
 
-            StartNewDay();
+            UpdateLabels();
 
             //Sets up data source for delivered patient and anticipated patient data grids
             anticipatedPatientBindingSource.DataSource = FamilySuites.AnticipatedPatients;
             deliveredPatientBindingSource.DataSource = FamilySuites.DeliveredPatients;
+            pPAssignmentBindingSource.DataSource = CurrentShift.PPShiftAssignments;
         }
 
-        Shift.Day today = new Shift.Day(DateTime.Today);
+        public Shifts.Day _thisDay;
+        public Shifts.Day ThisDay
+        {
+            get { return _thisDay; }
+            set
+            {
+                _thisDay = value;
+                DayLabel.Text = _thisDay.ToString();
+                _thisDay.UpdateLOS(FamilySuites.DeliveredPatients);
+                UpdateLabels();
+                DeliveredGrid.Refresh();
+            }
+        }
+
+        private Shift _currentShift;
+        public Shift CurrentShift
+        {
+            get { return _currentShift; }
+            set
+            {
+                _currentShift = value;
+                ShiftLabel.Text = CurrentShift.ToString();
+            }
+        }
 
         static UnitCensus FamilySuites = new UnitCensus();
+
 
         List<Room> AllRooms = CreateRooms();
         static List<Room> CreateRooms()
@@ -44,14 +70,25 @@ namespace PatientManager
             PPCensusLabel.Text = FamilySuites.TotalPatients.ToString();
             NsyCensusLabel.Text = FamilySuites.NurseryCount.ToString();
             MinNursesLabel.Text = FamilySuites.MinNursesNeeded().ToString();
-            DischargesLabel.Text = today.DischargesScheduled(FamilySuites.DeliveredPatients).ToString();
-            today.UpdateLOS(FamilySuites.DeliveredPatients);
+            DischargesLabel.Text = ThisDay.DischargesScheduled(FamilySuites.DeliveredPatients).ToString();
         }
 
-        void StartNewDay()
+        Shift NewShift()
         {
-            DayLabel.Text = today.ToString();
-            ShiftLabel.Text = today.Days.ToString();
+            if (CurrentShift == null)
+            {
+                CurrentShift = ThisDay.Days;
+            }
+            else if (CurrentShift.ThisShift == Shift.DayOrNight.Nights)
+            {
+                ThisDay = new Shifts.Day(ThisDay.Date.AddDays(1));
+                CurrentShift = ThisDay.Days;
+            }
+            else
+            {
+                CurrentShift = ThisDay.Nights;
+            }
+            return CurrentShift;
         }
 
         private void AddPatientButton_Click(object sender, EventArgs e)
@@ -102,8 +139,19 @@ namespace PatientManager
 
         private void StaffOnShiftButton_Click(object sender, EventArgs e)
         {
-            FormStaffOnShift shiftStaff = new FormStaffOnShift();
+            FormStaffOnShift shiftStaff = new FormStaffOnShift(CurrentShift);
             shiftStaff.Show();
+        }
+
+        private void EditAnticipatedButton_Click(object sender, EventArgs e)
+        {
+            DataGridViewCellEventArgs ea = new DataGridViewCellEventArgs(0,0);
+            AnticipatedGrid_CellDoubleClick(sender, ea);
+        }
+
+        private void NextButton_Click(object sender, EventArgs e)
+        {
+            NewShift();
         }
     }
 }

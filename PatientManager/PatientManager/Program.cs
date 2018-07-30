@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PatientManager.Patients;
-using PatientManager.Shift;
+using PatientManager.Shifts;
 using PatientManager.Staff;
 
 namespace PatientManager

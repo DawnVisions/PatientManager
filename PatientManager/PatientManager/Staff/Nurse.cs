@@ -1,4 +1,5 @@
 using System;
+using PatientManager.Shifts;
 
 namespace PatientManager.Staff
 {

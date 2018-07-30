@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
-            this.RNcheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.NSYcheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.PCTcheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.AddToShift = new System.Windows.Forms.Button();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nurseBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.RNCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -46,15 +51,6 @@
             this.label2.Size = new System.Drawing.Size(121, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Postpartum";
-            // 
-            // RNcheckedListBox
-            // 
-            this.RNcheckedListBox.FormattingEnabled = true;
-            this.RNcheckedListBox.Location = new System.Drawing.Point(72, 106);
-            this.RNcheckedListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.RNcheckedListBox.Name = "RNcheckedListBox";
-            this.RNcheckedListBox.Size = new System.Drawing.Size(368, 1200);
-            this.RNcheckedListBox.TabIndex = 3;
             // 
             // label3
             // 
@@ -70,7 +66,7 @@
             // 
             this.NSYcheckedListBox.FormattingEnabled = true;
             this.NSYcheckedListBox.Location = new System.Drawing.Point(517, 106);
-            this.NSYcheckedListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.NSYcheckedListBox.Margin = new System.Windows.Forms.Padding(6);
             this.NSYcheckedListBox.Name = "NSYcheckedListBox";
             this.NSYcheckedListBox.Size = new System.Drawing.Size(368, 784);
             this.NSYcheckedListBox.TabIndex = 5;
@@ -89,7 +85,7 @@
             // 
             this.PCTcheckedListBox.FormattingEnabled = true;
             this.PCTcheckedListBox.Location = new System.Drawing.Point(985, 106);
-            this.PCTcheckedListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.PCTcheckedListBox.Margin = new System.Windows.Forms.Padding(6);
             this.PCTcheckedListBox.Name = "PCTcheckedListBox";
             this.PCTcheckedListBox.Size = new System.Drawing.Size(368, 784);
             this.PCTcheckedListBox.TabIndex = 7;
@@ -104,21 +100,41 @@
             this.AddToShift.UseVisualStyleBackColor = true;
             this.AddToShift.Click += new System.EventHandler(this.AddToShift_Click);
             // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(PatientManager.Staff.Nurse);
+            // 
+            // nurseBindingSource1
+            // 
+            this.nurseBindingSource1.DataSource = typeof(PatientManager.Staff.Nurse);
+            // 
+            // RNCheckedListBox
+            // 
+            this.RNCheckedListBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.nurseBindingSource, "Name", true));
+            this.RNCheckedListBox.FormattingEnabled = true;
+            this.RNCheckedListBox.Location = new System.Drawing.Point(72, 106);
+            this.RNCheckedListBox.Name = "RNCheckedListBox";
+            this.RNCheckedListBox.Size = new System.Drawing.Size(350, 1044);
+            this.RNCheckedListBox.TabIndex = 9;
+            // 
             // FormStaffOnShift
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1436, 1377);
+            this.Controls.Add(this.RNCheckedListBox);
             this.Controls.Add(this.AddToShift);
             this.Controls.Add(this.PCTcheckedListBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.NSYcheckedListBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.RNcheckedListBox);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormStaffOnShift";
             this.Text = "Scheduled Staff";
+            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,11 +142,13 @@
 
         #endregion
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckedListBox RNcheckedListBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckedListBox NSYcheckedListBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckedListBox PCTcheckedListBox;
         private System.Windows.Forms.Button AddToShift;
+        private System.Windows.Forms.BindingSource nurseBindingSource;
+        private System.Windows.Forms.BindingSource nurseBindingSource1;
+        private System.Windows.Forms.CheckedListBox RNCheckedListBox;
     }
 }

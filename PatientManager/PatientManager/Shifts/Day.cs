@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using PatientManager.Patients;
-using PatientManager.Shift;
+using PatientManager.Shifts;
 using System.ComponentModel;
 
-namespace PatientManager.Shift
+namespace PatientManager.Shifts
 {
     public class Day
     {
-        DateTime Date { get; set; }
+        public DateTime Date { get; set; }
         public Shift Days;
         public Shift Nights;
 
@@ -17,7 +17,7 @@ namespace PatientManager.Shift
         {
             foreach (DeliveredPatient patient in patients)
             {
-                patient.CurrentLengthOfStay = (int)(Date.Date - patient.DeliveryDate.Date).TotalDays;
+                patient.CurrentLengthOfStay = (int)(Date - patient.DeliveryDate.Date).TotalDays;
             }
         }
 

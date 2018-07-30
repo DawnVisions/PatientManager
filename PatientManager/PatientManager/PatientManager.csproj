@@ -86,8 +86,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SavedPatientEventArgs.cs" />
-    <Compile Include="Shift\Day.cs" />
-    <Compile Include="Shift\Shift.cs" />
+    <Compile Include="Shifts\Day.cs" />
+    <Compile Include="Shifts\NsyAssignment.cs" />
+    <Compile Include="Shifts\PCTAssignment.cs" />
+    <Compile Include="Shifts\PPAssignment.cs" />
+    <Compile Include="Shifts\Shift.cs" />
     <Compile Include="Staff\CCL.cs" />
     <Compile Include="Staff\CoreNursery.cs" />
     <Compile Include="Staff\CorePostpartum.cs" />
@@ -119,6 +122,8 @@
     <None Include="Properties\DataSources\PatientManager.Patients.Patient.datasource" />
     <None Include="Properties\DataSources\PatientManager.Patients.Room.datasource" />
     <None Include="Properties\DataSources\PatientManager.Patients.UnitCensus.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Shift.PPAssignment.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Shift.Shift+PPRoles.datasource" />
     <None Include="Properties\DataSources\PatientManager.Staff.CCL.datasource" />
     <None Include="Properties\DataSources\PatientManager.Staff.CoreNursery.datasource" />
     <None Include="Properties\DataSources\PatientManager.Staff.CorePostpartum.datasource" />

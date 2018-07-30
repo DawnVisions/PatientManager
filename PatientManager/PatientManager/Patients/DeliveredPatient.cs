@@ -1,9 +1,12 @@
 using System;
+using PatientManager.Staff;
 
 namespace PatientManager.Patients
 {
 	public class DeliveredPatient : Patient, IHasRoom, IDischargable
 	{
+        public Nurse CurrentNurse { get; set; }
+
         public PatientType PatientType { get; }
 
         public DateTime DeliveryDate { get; set; }

@@ -8,32 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PatientManager.Staff;
+using PatientManager.Shifts;
 
 namespace PatientManager
 {
     public partial class FormStaffOnShift : Form
     {
-        public FormStaffOnShift()
+        public FormStaffOnShift(Shift shift)
         {
             InitializeComponent();
-            PutStaffInLists();
+            this.currentShift = shift;
+
+            ((ListBox)RNCheckedListBox).DataSource = SetUpPPnurses();
         }
 
-        void PutStaffInLists()
-        {
-            List<Nurse> PPNurses = SetUpPPnurses();
-            List<PCT> Unlicensed = SetUpPCT();
-
-            foreach (Nurse nurse in PPNurses)
-            {
-                RNcheckedListBox.Items.Add(nurse);
-            }
-
-            foreach (PCT pct in Unlicensed)
-            {
-                PCTcheckedListBox.Items.Add(pct);
-            }
-        }
+        Shift currentShift;
 
         List<Nurse> SetUpPPnurses()
         {
@@ -79,7 +68,11 @@ namespace PatientManager
 
         private void AddToShift_Click(object sender, EventArgs e)
         {
-            
+            foreach (Nurse nurse in RNCheckedListBox.CheckedItems)
+            {
+                currentShift.PPShiftAssignments.Add(new PPAssignment(nurse));
+            }
+
         }
     }
 }
