@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using PatientManager.Patients;
 using PatientManager.Shifts;
+using PatientManager.Staff;
 
 namespace PatientManager
 {
@@ -29,6 +30,7 @@ namespace PatientManager
             pPAssignmentBindingSource.DataSource = CurrentShift.PPShiftAssignments;
             nsyAssignmentBindingSource.DataSource = CurrentShift.NsyShiftAssignments;
             pCTAssignmentBindingSource.DataSource = CurrentShift.PCTShiftAssignments;
+            CurrentNurseComboBox.ValueType = typeof(Nurse);
             PPassignmentsDropDown.DataSource = Enum.GetValues(typeof(Shift.PPRoles));
             PPassignmentsDropDown.ValueType = typeof(Shift.PPRoles);
             NsyassignmentsDropDown.DataSource = Enum.GetValues(typeof(Shift.NsyRoles));
@@ -85,9 +87,6 @@ namespace PatientManager
 
         void UpdateLabels()
         {
-            //deliveredPatientBindingSource.Sort = "Room";
-            //DeliveredGrid.Sort(roomDataGridViewTextBoxColumn, System.ComponentModel.ListSortDirection.Ascending);
-            
             PPCensusLabel.Text = FamilySuites.TotalPatients.ToString();
             NsyCensusLabel.Text = FamilySuites.NurseryCount.ToString();
             MinNursesLabel.Text = FamilySuites.MinNursesNeeded().ToString();
@@ -112,6 +111,7 @@ namespace PatientManager
             return CurrentShift;
         }
 
+        //Opens Add Patient Form
         private void AddPatientButton_Click(object sender, EventArgs e)
         {
             FormAddPatient newPatient = new FormAddPatient(AllRooms);
@@ -119,6 +119,7 @@ namespace PatientManager
             newPatient.Show();
         }
 
+        //Adds patient to data grid from event triggered by Add Patient Form
         private void AddPatient_SavedPatient(object sender, SavedPatientEventArgs e)
         {
             if (e.Patient is AnticipatedPatient anticipatedPatient)
@@ -176,6 +177,32 @@ namespace PatientManager
         {
             NewShift();
             SetUpDataGridBinding();
+        }
+
+        //If nurse is working the floor, adds nurse to the combo box on the delivered patients data grid
+        private void PPStaffGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            CurrentNurseComboBox.Items.Clear();
+            foreach (PPAssignment assignment in CurrentShift.PPShiftAssignments)
+            {
+                if (assignment.Assignment == Shift.PPRoles.Floor)
+                {
+                    CurrentNurseComboBox.Items.Add(assignment.Nurse.Name);
+                }
+            }
+        }
+        
+        //Sets LastName text color to red if the patient is confidential
+        private void DeliveredGrid_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i<DeliveredGrid.RowCount; i++)
+            {
+                DeliveredPatient patient = (DeliveredPatient)DeliveredGrid.Rows[i].DataBoundItem;
+                if (patient.Confidential)
+                {
+                    DeliveredGrid.Rows[i].Cells[2].Style.ForeColor = System.Drawing.Color.Red;
+                }
+            }
         }
     }
 }

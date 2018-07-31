@@ -68,9 +68,15 @@ namespace PatientManager
             {
                 type = new CSPatientType();
             }
-            else
+            else if(gynButton.Checked)
             {
                 type = new GynPatientType();
+            }
+            else
+            {
+                MessageBox.Show("Please select a Patient Type");
+                DeliveryGroup.ForeColor = System.Drawing.Color.Maroon;
+                return;
             }
 
             if (anticipatedRadio.Checked)

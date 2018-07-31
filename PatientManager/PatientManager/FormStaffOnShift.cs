@@ -75,7 +75,7 @@ namespace PatientManager
             return NsyNurses;
         }
 
-            private void AddToShift_Click(object sender, EventArgs e)
+        private void AddToShift_Click(object sender, EventArgs e)
         {
             foreach (Nurse nurse in RNCheckedListBox.CheckedItems)
             {

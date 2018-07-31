@@ -5,7 +5,7 @@ namespace PatientManager.Patients
 {
 	public class DeliveredPatient : Patient, IHasRoom, IDischargable
 	{
-        public Nurse CurrentNurse { get; set; }
+        public string CurrentNurse { get; set; }
 
         public PatientType PatientType { get; }
 
