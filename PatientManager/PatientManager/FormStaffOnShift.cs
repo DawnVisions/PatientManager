@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PatientManager.Staff;
 using PatientManager.Shifts;
@@ -20,6 +14,8 @@ namespace PatientManager
             this.currentShift = shift;
 
             ((ListBox)RNCheckedListBox).DataSource = SetUpPPnurses();
+            ((ListBox)PCTcheckedListBox).DataSource = SetUpPCT();
+            ((ListBox)NSYcheckedListBox).DataSource = SetUpNsy();
         }
 
         Shift currentShift;
@@ -66,13 +62,34 @@ namespace PatientManager
             return Unlicensed;
         }
 
-        private void AddToShift_Click(object sender, EventArgs e)
+        List<CoreNursery> SetUpNsy()
+        {
+            List<CoreNursery> NsyNurses = new List<CoreNursery>();
+            NsyNurses.Add(new CoreNursery("Stacy V"));
+            NsyNurses.Add(new CoreNursery("Brianna B"));
+            NsyNurses.Add(new CoreNursery("Stephanie D"));
+            NsyNurses.Add(new CoreNursery("Emily B"));
+            NsyNurses.Add(new CoreNursery("Heidi K"));
+            NsyNurses.Add(new CoreNursery("Sarah L"));
+            NsyNurses.Add(new CoreNursery("Katie B"));
+            return NsyNurses;
+        }
+
+            private void AddToShift_Click(object sender, EventArgs e)
         {
             foreach (Nurse nurse in RNCheckedListBox.CheckedItems)
             {
                 currentShift.PPShiftAssignments.Add(new PPAssignment(nurse));
             }
-
+            foreach (PCT pct in PCTcheckedListBox.CheckedItems)
+            {
+                currentShift.PCTShiftAssignments.Add(new PCTAssignment(pct));
+            }
+            foreach (CoreNursery nurse in NSYcheckedListBox.CheckedItems)
+            {
+                currentShift.NsyShiftAssignments.Add(new NsyAssignment(nurse));
+            }
+            this.Close();
         }
     }
 }

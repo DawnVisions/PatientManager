@@ -62,15 +62,15 @@ namespace PatientManager
             PatientType type;
             if (vagRadio.Checked)
             {
-                type = new VagDeliveryType();
+                type = new VagPatientType();
             }
             else if (csRadio.Checked)
             {
-                type = new CSDeliveryType();
+                type = new CSPatientType();
             }
             else
             {
-                type = new GynDeliveryType();
+                type = new GynPatientType();
             }
 
             if (anticipatedRadio.Checked)

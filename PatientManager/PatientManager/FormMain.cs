@@ -15,12 +15,26 @@ namespace PatientManager
             ThisDay = new Shifts.Day(DateTime.Today);
             CurrentShift = NewShift();
 
-            UpdateLabels();
+            SetUpDataGridBinding();
 
-            //Sets up data source for delivered patient and anticipated patient data grids
+            UpdateLabels();
+        }
+
+        static UnitCensus FamilySuites = new UnitCensus();
+
+        void SetUpDataGridBinding()
+        {
             anticipatedPatientBindingSource.DataSource = FamilySuites.AnticipatedPatients;
             deliveredPatientBindingSource.DataSource = FamilySuites.DeliveredPatients;
             pPAssignmentBindingSource.DataSource = CurrentShift.PPShiftAssignments;
+            nsyAssignmentBindingSource.DataSource = CurrentShift.NsyShiftAssignments;
+            pCTAssignmentBindingSource.DataSource = CurrentShift.PCTShiftAssignments;
+            PPassignmentsDropDown.DataSource = Enum.GetValues(typeof(Shift.PPRoles));
+            PPassignmentsDropDown.ValueType = typeof(Shift.PPRoles);
+            NsyassignmentsDropDown.DataSource = Enum.GetValues(typeof(Shift.NsyRoles));
+            NsyassignmentsDropDown.ValueType = typeof(Shift.NsyRoles);
+            PCTassignmentsDropDown.DataSource = Enum.GetValues(typeof(Shift.PCTRoles));
+            PCTassignmentsDropDown.ValueType = typeof(Shift.PCTRoles);
         }
 
         public Shifts.Day _thisDay;
@@ -48,9 +62,6 @@ namespace PatientManager
             }
         }
 
-        static UnitCensus FamilySuites = new UnitCensus();
-
-
         List<Room> AllRooms = CreateRooms();
         static List<Room> CreateRooms()
         {
@@ -62,11 +73,21 @@ namespace PatientManager
             rooms.Add(new Room(5625, showerRoom: true));
             rooms.Add(new Room(5626, showerRoom: false));
             rooms.Add(new Room(5627, showerRoom: false));
+            rooms.Add(new Room(5628, showerRoom: true));
+            rooms.Add(new Room(5629, showerRoom: false));
+            rooms.Add(new Room(5631, showerRoom: false));
+            rooms.Add(new Room(5632, showerRoom: true));
+            rooms.Add(new Room(5634, showerRoom: false));
+            rooms.Add(new Room(5635, showerRoom: false));
+            rooms.Add(new Room(5637, showerRoom: false));
             return rooms;
         }
 
         void UpdateLabels()
         {
+            //deliveredPatientBindingSource.Sort = "Room";
+            //DeliveredGrid.Sort(roomDataGridViewTextBoxColumn, System.ComponentModel.ListSortDirection.Ascending);
+            
             PPCensusLabel.Text = FamilySuites.TotalPatients.ToString();
             NsyCensusLabel.Text = FamilySuites.NurseryCount.ToString();
             MinNursesLabel.Text = FamilySuites.MinNursesNeeded().ToString();
@@ -111,6 +132,7 @@ namespace PatientManager
             UpdateLabels();
         }
 
+        //Discharge patient button
         private void DischargeButton_Click(object sender, EventArgs e)
         {
             var selectedRows = DeliveredGrid.SelectedRows;
@@ -135,23 +157,25 @@ namespace PatientManager
             FormAddPatient editPatient = new FormAddPatient(AllRooms, patientToEdit);
             editPatient.SavedPatient += AddPatient_SavedPatient;
             editPatient.Show();
+        }  
+        private void EditAnticipatedButton_Click(object sender, EventArgs e)
+        {
+            DataGridViewCellEventArgs ea = new DataGridViewCellEventArgs(0,0);
+            AnticipatedGrid_CellDoubleClick(sender, ea);
         }
-
+        
+        //Go to form that adds staff to shift
         private void StaffOnShiftButton_Click(object sender, EventArgs e)
         {
             FormStaffOnShift shiftStaff = new FormStaffOnShift(CurrentShift);
             shiftStaff.Show();
         }
 
-        private void EditAnticipatedButton_Click(object sender, EventArgs e)
-        {
-            DataGridViewCellEventArgs ea = new DataGridViewCellEventArgs(0,0);
-            AnticipatedGrid_CellDoubleClick(sender, ea);
-        }
-
+        //Next shift button
         private void NextButton_Click(object sender, EventArgs e)
         {
             NewShift();
+            SetUpDataGridBinding();
         }
     }
 }

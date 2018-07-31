@@ -20,7 +20,14 @@ namespace PatientManager.Patients
 
 		public bool Medicaid { get; }
 
-        public Patient(string lastName, string attending, bool nicu, bool confidential, bool nonEng, bool pih, bool medicaid)
+        protected Patient(
+            string lastName, 
+            string attending, 
+            bool nicu, 
+            bool confidential,
+            bool nonEng, 
+            bool pih, 
+            bool medicaid)
         {
             Id = Guid.NewGuid();
             LastName = lastName;
@@ -32,7 +39,7 @@ namespace PatientManager.Patients
             Medicaid = medicaid;
         }
 
-        public Patient(Patient patient)
+        protected Patient(Patient patient)
         {
             Id = patient.Id;
             LastName = patient.LastName;

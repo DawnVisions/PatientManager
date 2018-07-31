@@ -6,7 +6,7 @@ namespace PatientManager.Patients
 	{
         public PatientType AnticipatedDeliveryType { get; set; }
 
-        public Room Room { get; private set; }
+        public Room Room { get; set; }
 
         public AnticipatedPatient(
             string lastName,

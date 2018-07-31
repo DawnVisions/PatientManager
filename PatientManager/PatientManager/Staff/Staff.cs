@@ -13,7 +13,7 @@ namespace PatientManager.Staff
 
         public enum Roles { Unlicensed, Nursery, Postpartum }
 
-        public Staff(string name)
+        protected Staff(string name)
         {
             Name = name;
             MyRoles = new List<Roles>();

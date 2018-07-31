@@ -124,6 +124,8 @@
     <None Include="Properties\DataSources\PatientManager.Patients.UnitCensus.datasource" />
     <None Include="Properties\DataSources\PatientManager.Shift.PPAssignment.datasource" />
     <None Include="Properties\DataSources\PatientManager.Shift.Shift+PPRoles.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Shifts.NsyAssignment.datasource" />
+    <None Include="Properties\DataSources\PatientManager.Shifts.PCTAssignment.datasource" />
     <None Include="Properties\DataSources\PatientManager.Staff.CCL.datasource" />
     <None Include="Properties\DataSources\PatientManager.Staff.CoreNursery.datasource" />
     <None Include="Properties\DataSources\PatientManager.Staff.CorePostpartum.datasource" />

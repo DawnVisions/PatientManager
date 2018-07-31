@@ -5,7 +5,7 @@ namespace PatientManager.Staff
 {
 	public abstract class Nurse : Staff
 	{
-        public Nurse (string name) : base (name)
+        protected Nurse (string name) : base (name)
         {
 
         }

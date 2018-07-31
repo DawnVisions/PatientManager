@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AddPatientButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.DeliveredGrid = new System.Windows.Forms.DataGridView();
@@ -82,20 +84,32 @@
             this.NsyCensusLabel = new System.Windows.Forms.Label();
             this.PPCensusLabel = new System.Windows.Forms.Label();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.PPStaffGrid = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.assignmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.PPassignmentsDropDown = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.pPRolesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pPAssignmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nurseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NurseryStaffGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NsyassignmentsDropDown = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.nsyAssignmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PCTStaffGrid = new System.Windows.Forms.DataGridView();
+            this.pCTAssignmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PCTassignmentsDropDown = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DeliveredGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deliveredPatientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AnticipatedGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.anticipatedPatientBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PPStaffGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPRolesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPAssignmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NurseryStaffGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nsyAssignmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PCTStaffGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pCTAssignmentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // AddPatientButton
@@ -207,6 +221,7 @@
             this.dataGridViewTextBoxColumn10.DataPropertyName = "CurrentLengthOfStay";
             this.dataGridViewTextBoxColumn10.HeaderText = "LOS";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.Width = 99;
             // 
             // attendingDataGridViewTextBoxColumn
@@ -396,7 +411,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1998, 490);
+            this.label3.Location = new System.Drawing.Point(1998, 520);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(137, 25);
@@ -580,14 +595,16 @@
             this.dataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewComboBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // dataGridView1
+            // PPStaffGrid
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.PPStaffGrid.AllowUserToAddRows = false;
+            this.PPStaffGrid.AllowUserToDeleteRows = false;
+            this.PPStaffGrid.AutoGenerateColumns = false;
+            this.PPStaffGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.PPStaffGrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.PPStaffGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PPStaffGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.PPStaffGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -595,35 +612,42 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PPStaffGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.PPStaffGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PPStaffGrid.ColumnHeadersVisible = false;
+            this.PPStaffGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2,
-            this.assignmentDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.pPAssignmentBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(2003, 123);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(344, 206);
-            this.dataGridView1.TabIndex = 30;
+            this.PPassignmentsDropDown});
+            this.PPStaffGrid.DataSource = this.pPAssignmentBindingSource;
+            this.PPStaffGrid.Location = new System.Drawing.Point(2003, 132);
+            this.PPStaffGrid.MultiSelect = false;
+            this.PPStaffGrid.Name = "PPStaffGrid";
+            this.PPStaffGrid.RowHeadersVisible = false;
+            this.PPStaffGrid.RowTemplate.Height = 33;
+            this.PPStaffGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.PPStaffGrid.ShowEditingIcon = false;
+            this.PPStaffGrid.Size = new System.Drawing.Size(413, 336);
+            this.PPStaffGrid.TabIndex = 30;
             // 
             // Column2
             // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column2.DataPropertyName = "Nurse";
             this.Column2.HeaderText = "Nurse";
+            this.Column2.MinimumWidth = 80;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 114;
+            this.Column2.Width = 80;
             // 
-            // assignmentDataGridViewTextBoxColumn
+            // PPassignmentsDropDown
             // 
-            this.assignmentDataGridViewTextBoxColumn.DataPropertyName = "Assignment";
-            this.assignmentDataGridViewTextBoxColumn.DataSource = this.pPRolesBindingSource;
-            this.assignmentDataGridViewTextBoxColumn.HeaderText = "Assignment";
-            this.assignmentDataGridViewTextBoxColumn.Name = "assignmentDataGridViewTextBoxColumn";
-            this.assignmentDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.assignmentDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.assignmentDataGridViewTextBoxColumn.Width = 169;
+            this.PPassignmentsDropDown.DataPropertyName = "Assignment";
+            this.PPassignmentsDropDown.DataSource = this.pPRolesBindingSource;
+            this.PPassignmentsDropDown.HeaderText = "Assignment";
+            this.PPassignmentsDropDown.MinimumWidth = 100;
+            this.PPassignmentsDropDown.Name = "PPassignmentsDropDown";
+            this.PPassignmentsDropDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PPassignmentsDropDown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // pPRolesBindingSource
             // 
@@ -641,13 +665,128 @@
             this.nurseDataGridViewTextBoxColumn.ReadOnly = true;
             this.nurseDataGridViewTextBoxColumn.Width = 5;
             // 
+            // NurseryStaffGrid
+            // 
+            this.NurseryStaffGrid.AllowUserToAddRows = false;
+            this.NurseryStaffGrid.AllowUserToDeleteRows = false;
+            this.NurseryStaffGrid.AutoGenerateColumns = false;
+            this.NurseryStaffGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.NurseryStaffGrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.NurseryStaffGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NurseryStaffGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.NurseryStaffGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.NurseryStaffGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.NurseryStaffGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.NurseryStaffGrid.ColumnHeadersVisible = false;
+            this.NurseryStaffGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn11,
+            this.NsyassignmentsDropDown});
+            this.NurseryStaffGrid.DataSource = this.nsyAssignmentBindingSource;
+            this.NurseryStaffGrid.Location = new System.Drawing.Point(2003, 557);
+            this.NurseryStaffGrid.MultiSelect = false;
+            this.NurseryStaffGrid.Name = "NurseryStaffGrid";
+            this.NurseryStaffGrid.RowHeadersVisible = false;
+            this.NurseryStaffGrid.RowTemplate.Height = 33;
+            this.NurseryStaffGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.NurseryStaffGrid.ShowEditingIcon = false;
+            this.NurseryStaffGrid.Size = new System.Drawing.Size(413, 260);
+            this.NurseryStaffGrid.TabIndex = 31;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "Nurse";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Nurse";
+            this.dataGridViewTextBoxColumn11.MinimumWidth = 80;
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Width = 80;
+            // 
+            // NsyassignmentsDropDown
+            // 
+            this.NsyassignmentsDropDown.DataPropertyName = "Assignment";
+            this.NsyassignmentsDropDown.DataSource = this.pPRolesBindingSource;
+            this.NsyassignmentsDropDown.HeaderText = "Assignment";
+            this.NsyassignmentsDropDown.MinimumWidth = 100;
+            this.NsyassignmentsDropDown.Name = "NsyassignmentsDropDown";
+            this.NsyassignmentsDropDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NsyassignmentsDropDown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // nsyAssignmentBindingSource
+            // 
+            this.nsyAssignmentBindingSource.DataSource = typeof(PatientManager.Shifts.NsyAssignment);
+            // 
+            // PCTStaffGrid
+            // 
+            this.PCTStaffGrid.AllowUserToAddRows = false;
+            this.PCTStaffGrid.AllowUserToDeleteRows = false;
+            this.PCTStaffGrid.AutoGenerateColumns = false;
+            this.PCTStaffGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.PCTStaffGrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.PCTStaffGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PCTStaffGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.PCTStaffGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PCTStaffGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.PCTStaffGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PCTStaffGrid.ColumnHeadersVisible = false;
+            this.PCTStaffGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column3,
+            this.PCTassignmentsDropDown});
+            this.PCTStaffGrid.DataSource = this.pCTAssignmentBindingSource;
+            this.PCTStaffGrid.Location = new System.Drawing.Point(2003, 897);
+            this.PCTStaffGrid.MultiSelect = false;
+            this.PCTStaffGrid.Name = "PCTStaffGrid";
+            this.PCTStaffGrid.RowHeadersVisible = false;
+            this.PCTStaffGrid.RowTemplate.Height = 33;
+            this.PCTStaffGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.PCTStaffGrid.ShowEditingIcon = false;
+            this.PCTStaffGrid.Size = new System.Drawing.Size(413, 173);
+            this.PCTStaffGrid.TabIndex = 32;
+            // 
+            // pCTAssignmentBindingSource
+            // 
+            this.pCTAssignmentBindingSource.DataSource = typeof(PatientManager.Shifts.PCTAssignment);
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "PCT";
+            this.Column3.HeaderText = "PCT";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // PCTassignmentsDropDown
+            // 
+            this.PCTassignmentsDropDown.DataPropertyName = "Assignment";
+            this.PCTassignmentsDropDown.DataSource = this.pPRolesBindingSource;
+            this.PCTassignmentsDropDown.HeaderText = "Assignment";
+            this.PCTassignmentsDropDown.MinimumWidth = 100;
+            this.PCTassignmentsDropDown.Name = "PCTassignmentsDropDown";
+            this.PCTassignmentsDropDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PCTassignmentsDropDown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(2518, 1510);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.PCTStaffGrid);
+            this.Controls.Add(this.NurseryStaffGrid);
+            this.Controls.Add(this.PPStaffGrid);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.StaffOnShiftButton);
             this.Controls.Add(this.EditAnticipatedButton);
@@ -672,9 +811,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.anticipatedPatientBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PPStaffGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPRolesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPAssignmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NurseryStaffGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nsyAssignmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PCTStaffGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pCTAssignmentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -724,6 +867,11 @@
         private System.Windows.Forms.Label NsyCensusLabel;
         private System.Windows.Forms.Label PPCensusLabel;
         private System.Windows.Forms.BindingSource deliveredPatientBindingSource;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
+        private System.Windows.Forms.DataGridView PPStaffGrid;
+        private System.Windows.Forms.BindingSource pPRolesBindingSource;
+        private System.Windows.Forms.BindingSource pPAssignmentBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nurseDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn HomeToday;
         private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
@@ -735,13 +883,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn acuityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn pIHDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView NurseryStaffGrid;
+        private System.Windows.Forms.BindingSource nsyAssignmentBindingSource;
+        private System.Windows.Forms.DataGridView PCTStaffGrid;
+        private System.Windows.Forms.BindingSource pCTAssignmentBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn assignmentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource pPRolesBindingSource;
-        private System.Windows.Forms.BindingSource pPAssignmentBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nurseDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn PPassignmentsDropDown;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewComboBoxColumn NsyassignmentsDropDown;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn PCTassignmentsDropDown;
     }
 }
 

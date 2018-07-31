@@ -16,21 +16,21 @@ namespace PatientManager.Patients
 
     public enum PatientTypesEnum { Unknown, Vag, CS, Gyn };
 
-    public class VagDeliveryType : PatientType
+    public class VagPatientType : PatientType
     {
         public override PatientTypesEnum Type => PatientTypesEnum.Vag;
         public override int LengthOfStay => 2;
         public override int InitialAcuity => 3;
     }
 
-    public class CSDeliveryType : PatientType
+    public class CSPatientType : PatientType
     {
         public override PatientTypesEnum Type => PatientTypesEnum.CS;
         public override int LengthOfStay => 3;
         public override int InitialAcuity => 4;
     }
 
-    public class GynDeliveryType : PatientType
+    public class GynPatientType : PatientType
     {
         public override PatientTypesEnum Type => PatientTypesEnum.Gyn;
         public override int LengthOfStay => 1;
