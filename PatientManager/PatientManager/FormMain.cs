@@ -27,16 +27,7 @@ namespace PatientManager
         {
             anticipatedPatientBindingSource.DataSource = FamilySuites.AnticipatedPatients;
             deliveredPatientBindingSource.DataSource = FamilySuites.DeliveredPatients;
-            pPAssignmentBindingSource.DataSource = CurrentShift.PPShiftAssignments;
-            nsyAssignmentBindingSource.DataSource = CurrentShift.NsyShiftAssignments;
-            pCTAssignmentBindingSource.DataSource = CurrentShift.PCTShiftAssignments;
-            CurrentNurseComboBox.ValueType = typeof(Nurse);
-            PPassignmentsDropDown.DataSource = Enum.GetValues(typeof(Shift.PPRoles));
-            PPassignmentsDropDown.ValueType = typeof(Shift.PPRoles);
-            NsyassignmentsDropDown.DataSource = Enum.GetValues(typeof(Shift.NsyRoles));
-            NsyassignmentsDropDown.ValueType = typeof(Shift.NsyRoles);
-            PCTassignmentsDropDown.DataSource = Enum.GetValues(typeof(Shift.PCTRoles));
-            PCTassignmentsDropDown.ValueType = typeof(Shift.PCTRoles);
+            CurrentNurseComboBox.ValueType = typeof(string);
         }
 
         public Shifts.Day _thisDay;
@@ -169,7 +160,53 @@ namespace PatientManager
         private void StaffOnShiftButton_Click(object sender, EventArgs e)
         {
             FormStaffOnShift shiftStaff = new FormStaffOnShift(CurrentShift);
+            shiftStaff.ReturnedFromStaff += AddRoles_ReturnedFromStaff;
             shiftStaff.Show();
+        }
+
+        //Adds roles based on what roles the staff member can perform into drop down box
+
+        private void AddRoles_ReturnedFromStaff(object sender, EventArgs e)
+        {
+            PPNurseRoles.ValueType = typeof(Roles);
+            foreach (PPAssignment assignment in CurrentShift.PPShiftAssignments)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(PPStaffGrid);
+                row.Cells[0].Value = assignment.Nurse;
+                DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)row.Cells[1];
+                foreach (Roles role in assignment.Nurse.MyRoles)
+                {
+                    comboCell.Items.Add(role);
+                }
+                PPStaffGrid.Rows.Add(row);
+            }
+            NsyRoles.ValueType = typeof(Roles);
+            foreach (NsyAssignment assignment in CurrentShift.NsyShiftAssignments)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(NsyStaffGrid);
+                row.Cells[0].Value = assignment.Nurse;
+                DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)row.Cells[1];
+                foreach (Roles role in assignment.Nurse.MyRoles)
+                {
+                    comboCell.Items.Add(role);
+                }
+                NsyStaffGrid.Rows.Add(row);
+            }
+            PCTRoles.ValueType = typeof(Roles);
+            foreach (PCTAssignment assignment in CurrentShift.PCTShiftAssignments)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(PctStaffGrid);
+                row.Cells[0].Value = assignment.PCT;
+                DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)row.Cells[1];
+                foreach (Roles role in assignment.PCT.MyRoles)
+                {
+                    comboCell.Items.Add(role);
+                }
+                PctStaffGrid.Rows.Add(row);
+            }
         }
 
         //Next shift button
@@ -177,17 +214,29 @@ namespace PatientManager
         {
             NewShift();
             SetUpDataGridBinding();
+            NsyStaffGrid.Rows.Clear();
+            PPStaffGrid.Rows.Clear();
+            PctStaffGrid.Rows.Clear();
+            for (int i = 0; i < DeliveredGrid.RowCount; i++)
+            {
+                DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)DeliveredGrid.Rows[i].Cells[10];
+                comboCell.Items.Clear();
+                comboCell.Items.Add("");
+                comboCell.Value = "";
+            }
         }
 
         //If nurse is working the floor, adds nurse to the combo box on the delivered patients data grid
         private void PPStaffGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             CurrentNurseComboBox.Items.Clear();
-            foreach (PPAssignment assignment in CurrentShift.PPShiftAssignments)
+            for(int i = 0; i < PPStaffGrid.RowCount; i++)
             {
-                if (assignment.Assignment == Shift.PPRoles.Floor)
+                DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)PPStaffGrid.Rows[i].Cells[1];
+                string selectedText = Convert.ToString(comboCell.FormattedValue.ToString());
+                if (selectedText == "Floor")
                 {
-                    CurrentNurseComboBox.Items.Add(assignment.Nurse.Name);
+                    CurrentNurseComboBox.Items.Add(PPStaffGrid.Rows[i].Cells[0].Value.ToString());
                 }
             }
         }

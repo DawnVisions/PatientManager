@@ -6,7 +6,7 @@ namespace PatientManager.Shifts
     public class NsyAssignment
     {
         public CoreNursery Nurse { get; }
-        public Shift.NsyRoles Assignment { get; set; }
+        public Roles Assignment { get; set; }
 
         public NsyAssignment(CoreNursery nurse)
         {

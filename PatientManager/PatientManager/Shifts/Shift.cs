@@ -10,12 +10,6 @@ namespace PatientManager.Shifts
 	{
         public enum DayOrNight { Days, Nights}
 
-        public enum PPRoles { CCL, Floor, Nursery, OnCall, Recovery, Pulled, HUA, PCT, Other}
-
-        public enum PCTRoles { HUA, PCT}
-
-        public enum NsyRoles { Nursery, NsyAdmit, NICU, Intermediate, Other}
-
         public DayOrNight ThisShift { get;  }
 
         public BindingList<PPAssignment> PPShiftAssignments { get; set; }

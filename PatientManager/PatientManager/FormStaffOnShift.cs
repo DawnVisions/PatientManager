@@ -20,6 +20,8 @@ namespace PatientManager
 
         Shift currentShift;
 
+        public event EventHandler<EventArgs> ReturnedFromStaff;
+
         List<Nurse> SetUpPPnurses()
         {
             List<Nurse> PPNurses = new List<Nurse>();
@@ -89,6 +91,9 @@ namespace PatientManager
             {
                 currentShift.NsyShiftAssignments.Add(new NsyAssignment(nurse));
             }
+
+            ReturnedFromStaff?.Invoke(this, new EventArgs());
+
             this.Close();
         }
     }

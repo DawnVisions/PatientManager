@@ -11,8 +11,6 @@ namespace PatientManager.Staff
     
         public List<Roles> MyRoles { get; set; }
 
-        public enum Roles { Unlicensed, Nursery, Postpartum }
-
         protected Staff(string name)
         {
             Name = name;

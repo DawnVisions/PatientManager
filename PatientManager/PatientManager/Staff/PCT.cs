@@ -9,7 +9,9 @@ namespace PatientManager.Staff
 	{
         public PCT(string name) : base(name)
         {
-            MyRoles.Add(Roles.Unlicensed);
+            MyRoles.Add(Roles.PCT);
+            MyRoles.Add(Roles.HUA);
+            MyRoles.Add(Roles.Other);
         }
     }
 }

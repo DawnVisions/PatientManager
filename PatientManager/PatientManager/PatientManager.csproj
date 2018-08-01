@@ -83,7 +83,6 @@
     <Compile Include="Patients\Patient.cs" />
     <Compile Include="Patients\Room.cs" />
     <Compile Include="Patients\UnitCensus.cs" />
-    <Compile Include="PPNurseAssignedEventArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SavedPatientEventArgs.cs" />
@@ -97,6 +96,7 @@
     <Compile Include="Staff\CorePostpartum.cs" />
     <Compile Include="Staff\Nurse.cs" />
     <Compile Include="Staff\PCT.cs" />
+    <Compile Include="Staff\Roles.cs" />
     <Compile Include="Staff\Staff.cs" />
     <EmbeddedResource Include="FormAddPatient.resx">
       <DependentUpon>FormAddPatient.cs</DependentUpon>

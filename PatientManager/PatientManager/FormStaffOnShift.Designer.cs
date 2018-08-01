@@ -28,18 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.NSYcheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.PCTcheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.AddToShift = new System.Windows.Forms.Button();
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nurseBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.RNCheckedListBox = new System.Windows.Forms.CheckedListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -100,17 +95,8 @@
             this.AddToShift.UseVisualStyleBackColor = true;
             this.AddToShift.Click += new System.EventHandler(this.AddToShift_Click);
             // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(PatientManager.Staff.Nurse);
-            // 
-            // nurseBindingSource1
-            // 
-            this.nurseBindingSource1.DataSource = typeof(PatientManager.Staff.Nurse);
-            // 
             // RNCheckedListBox
             // 
-            this.RNCheckedListBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.nurseBindingSource, "Name", true));
             this.RNCheckedListBox.FormattingEnabled = true;
             this.RNCheckedListBox.Location = new System.Drawing.Point(72, 106);
             this.RNCheckedListBox.Name = "RNCheckedListBox";
@@ -133,8 +119,6 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormStaffOnShift";
             this.Text = "Scheduled Staff";
-            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,8 +131,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckedListBox PCTcheckedListBox;
         private System.Windows.Forms.Button AddToShift;
-        private System.Windows.Forms.BindingSource nurseBindingSource;
-        private System.Windows.Forms.BindingSource nurseBindingSource1;
         private System.Windows.Forms.CheckedListBox RNCheckedListBox;
     }
 }
