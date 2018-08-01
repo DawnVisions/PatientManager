@@ -26,7 +26,7 @@ namespace PatientManager.Shifts
             int _dischargesScheduled = 0;
             foreach (DeliveredPatient patient in patients)
             {
-                if (patient.PlannedDischargeDay.Date == this.Date.Date)
+                if (patient.PlannedDischargeDay.Date <= this.Date.Date)
                 {
                     _dischargesScheduled += 1;
                     patient.DischargeToday = true;

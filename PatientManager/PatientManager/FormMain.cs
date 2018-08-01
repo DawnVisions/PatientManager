@@ -105,7 +105,7 @@ namespace PatientManager
         //Opens Add Patient Form
         private void AddPatientButton_Click(object sender, EventArgs e)
         {
-            FormAddPatient newPatient = new FormAddPatient(AllRooms);
+            FormAddPatient newPatient = new FormAddPatient(AllRooms, ThisDay.Date);
             newPatient.SavedPatient += AddPatient_SavedPatient;
             newPatient.Show();
         }
@@ -146,7 +146,7 @@ namespace PatientManager
         {
             AnticipatedPatient patientToEdit = AnticipatedGrid.CurrentRow.DataBoundItem as AnticipatedPatient;
             FamilySuites.AnticipatedPatients.Remove(patientToEdit);
-            FormAddPatient editPatient = new FormAddPatient(AllRooms, patientToEdit);
+            FormAddPatient editPatient = new FormAddPatient(AllRooms, ThisDay.Date, patientToEdit);
             editPatient.SavedPatient += AddPatient_SavedPatient;
             editPatient.Show();
         }  
@@ -165,7 +165,6 @@ namespace PatientManager
         }
 
         //Adds roles based on what roles the staff member can perform into drop down box
-
         private void AddRoles_ReturnedFromStaff(object sender, EventArgs e)
         {
             PPNurseRoles.ValueType = typeof(Roles);

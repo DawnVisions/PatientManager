@@ -9,17 +9,18 @@ namespace PatientManager
     {
         public event EventHandler<SavedPatientEventArgs> SavedPatient;
 
-        public FormAddPatient(List<Room> AllRooms, AnticipatedPatient existingPatient = null)
+        public FormAddPatient(List<Room> AllRooms, DateTime currentDate, AnticipatedPatient existingPatient = null)
         {
             InitializeComponent();
-            deliveryDate.Value = DateTime.Today;
+            deliveryDate.Value = currentDate;
             SetUpRoomComboBox(AllRooms);
             if (existingPatient != null)
             {
                 LoadFromPatient(existingPatient);
             }
+            CurrentDate = currentDate;
         }
-
+        DateTime CurrentDate;
         private void LoadFromPatient(AnticipatedPatient existingPatient)
         {
             AddButton.Text = "Edit Patient";
@@ -106,7 +107,8 @@ namespace PatientManager
                     pihCheck.Checked, 
                     medicaidCheck.Checked, 
                     type, 
-                    deliveryDate.Value, 
+                    deliveryDate.Value,
+                    CurrentDate,
                     (Room)roomBox.SelectedItem);
 
                 this.Close();

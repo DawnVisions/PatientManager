@@ -62,14 +62,15 @@ namespace PatientManager.Patients
             bool pih,
             bool medicaid, 
             PatientType patientType, 
-            DateTime date,
+            DateTime deliveryDate,
+            DateTime currentDate,
             Room room) 
             : base(lastName, attending, nicu, confidential, nonEng, pih, medicaid)
         {
             PatientType = patientType;
-            DeliveryDate = date;
+            DeliveryDate = deliveryDate;
             Room = room;
-            CurrentLengthOfStay = 0;
+            CurrentLengthOfStay = (int)(currentDate - deliveryDate).TotalDays;
             PlannedLengthOfStay = patientType.LengthOfStay;
             Acuity = patientType.InitialAcuity;
         }
