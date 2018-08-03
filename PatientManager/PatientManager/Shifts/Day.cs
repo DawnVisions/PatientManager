@@ -44,8 +44,10 @@ namespace PatientManager.Shifts
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(Date.DayOfWeek + " " + Date.ToLongDateString());
+            var sb = new StringBuilder();
+            sb.Append(Date.DayOfWeek);
+            sb.Append(" ");
+            sb.Append(Date.ToLongDateString());
             return sb.ToString();
         }
 	}
